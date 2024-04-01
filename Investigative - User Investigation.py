@@ -268,7 +268,7 @@ def format_auth_host_results(action=None, success=None, container=None, results=
     # parameter list for template variable replacement
     parameters = [
         "search_user_auth_hosts:action_result.data.*.host_count",
-        "search_makeresults_hosts:action_result.data.*.content.hosts"
+        "search_makeresults_hosts:action_result.data.*.hosts"
     ]
 
     ################################################################################

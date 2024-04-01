@@ -101,7 +101,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "1156a6e5921c5a101fcf12b8145a818e63b41e77",
+            "hash": "62d9b346ce7f70823316939a1f018834d0e0ab74",
             "nodes": {
                 "0": {
                     "data": {
@@ -148,7 +148,7 @@
                         "id": "10",
                         "parameters": [
                             "search_user_auth_hosts:action_result.data.*.host_count",
-                            "search_makeresults_hosts:action_result.data.*.content.hosts"
+                            "search_makeresults_hosts:action_result.data.*.hosts"
                         ],
                         "template": "How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n",
                         "type": "format"
@@ -188,6 +188,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 980,
@@ -840,7 +843,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T12:08:08.598088+00:00",
+    "create_time": "2024-04-01T12:12:21.941892+00:00",
     "draft_mode": false,
     "labels": [
         "*"
