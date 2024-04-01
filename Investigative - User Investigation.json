@@ -80,7 +80,6 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "fd188a8592929c8c5b5077ed4f0fb8493c1043fa",
             "nodes": {
                 "0": {
                     "data": {
