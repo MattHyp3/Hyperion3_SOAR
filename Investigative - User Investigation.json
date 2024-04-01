@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "d0d4b81a353170fbe5dd2c11087bf83e7c2e3684",
+            "hash": "ac3fd8d368ef27fbe810de2be77715b5a4e3b31c",
             "nodes": {
                 "0": {
                     "data": {
@@ -91,7 +91,7 @@
                             "command": "| tstats",
                             "display": "count",
                             "end_time": "-0d",
-                            "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
+                            "query": "",
                             "search_mode": "smart",
                             "start_time": "-7d"
                         },
@@ -117,7 +117,7 @@
                     "id": "2",
                     "type": "action",
                     "warnings": {},
-                    "x": 960,
+                    "x": 980,
                     "y": 680
                 },
                 "3": {
@@ -130,8 +130,10 @@
                         "functionId": 1,
                         "functionName": "format_query_test",
                         "id": "3",
-                        "parameters": [],
-                        "template": "| eval test=\"test\"\n| table test",
+                        "parameters": [
+                            "artifact:*.cef.suser"
+                        ],
+                        "template": "count from datamodel=Authentication where Authentication.user=\"{0}\"",
                         "type": "format"
                     },
                     "errors": {},
@@ -139,7 +141,7 @@
                     "type": "format",
                     "warnings": {},
                     "x": 980,
-                    "y": 540
+                    "y": 520
                 },
                 "4": {
                     "data": {
@@ -318,7 +320,7 @@
                     "id": "4",
                     "type": "utility",
                     "warnings": {},
-                    "x": 940,
+                    "x": 980,
                     "y": 800
                 }
             },
@@ -331,7 +333,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:26:46.087262+00:00",
+    "create_time": "2024-04-01T10:28:13.963239+00:00",
     "draft_mode": false,
     "labels": [
         "*"

@@ -28,7 +28,7 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
     parameters.append({
         "command": "| tstats",
         "search_mode": "smart",
-        "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
+        "query": "",
         "display": "count",
         "start_time": "-7d",
         "end_time": "-0d",
@@ -53,10 +53,12 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 def format_query_test(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_query_test() called")
 
-    template = """| eval test=\"test\"\n| table test"""
+    template = """count from datamodel=Authentication where Authentication.user=\"{0}\""""
 
     # parameter list for template variable replacement
-    parameters = []
+    parameters = [
+        "artifact:*.cef.suser"
+    ]
 
     ################################################################################
     ## Custom Code Start
