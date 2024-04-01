@@ -73,13 +73,28 @@
                     "targetPort": "10_in"
                 },
                 {
-                    "id": "port_10_to_port_4",
+                    "id": "port_10_to_port_11",
                     "sourceNode": "10",
                     "sourcePort": "10_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_7_to_port_11",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_12",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
                 }
             ],
+            "hash": "1d5698dcc4cd1b7e8e41d91336216edd56bf2fc3",
             "nodes": {
                 "0": {
                     "data": {
@@ -110,8 +125,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 980,
-                    "y": 1420
+                    "x": 1000,
+                    "y": 1600
                 },
                 "10": {
                     "data": {
@@ -137,6 +152,187 @@
                     "warnings": {},
                     "x": 820,
                     "y": 1220
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_auth_summary",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "search_user_auth",
+                                "search_user_auth_hosts"
+                            ]
+                        },
+                        "functionId": 6,
+                        "functionName": "format_auth_summary",
+                        "id": "11",
+                        "parameters": [
+                            "format_auth_yes:formatted_data",
+                            "format_auth_no:formatted_data",
+                            "format_auth_host_results:formatted_data"
+                        ],
+                        "template": "{0}{1}\n \n{2}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1340
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 2,
+                        "functionName": "add_comment_add_note_2",
+                        "id": "12",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "add_note": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "title",
+                                        "name": "title",
+                                        "placeholder": "Enter a note title",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "content",
+                                        "name": "content",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "markdown",
+                                            "html"
+                                        ],
+                                        "default": "markdown",
+                                        "description": "",
+                                        "label": "note format",
+                                        "name": "note_format",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": "general",
+                                        "hidden": true,
+                                        "name": "note_type",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "event_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "task_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add note",
+                                "name": "add_note"
+                            },
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "add_note": {
+                                "_internal": [
+                                    "container",
+                                    "note_type",
+                                    "author",
+                                    "event_id",
+                                    "task_id",
+                                    "trace"
+                                ],
+                                "content": "format_auth_summary:formatted_data",
+                                "note_format": "markdown",
+                                "note_type": "general",
+                                "title": "Auth Summary"
+                            },
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "format_auth_summary:formatted_data"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1460
                 },
                 "2": {
                     "data": {
@@ -397,9 +593,13 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "warnings": {},
-                    "x": 940,
-                    "y": 1340
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
+                    "x": 1260,
+                    "y": 1460
                 },
                 "5": {
                     "data": {
@@ -494,7 +694,7 @@
                     "id": "7",
                     "type": "format",
                     "warnings": {},
-                    "x": 1120,
+                    "x": 1140,
                     "y": 880
                 },
                 "8": {
@@ -589,7 +789,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:19:52.650110+00:00",
+    "create_time": "2024-04-01T11:27:03.541855+00:00",
     "draft_mode": false,
     "labels": [
         "*"

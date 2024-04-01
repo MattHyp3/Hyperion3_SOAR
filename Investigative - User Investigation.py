@@ -191,6 +191,8 @@ def format_auth_no(action=None, success=None, container=None, results=None, hand
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_no")
 
+    join_format_auth_summary(container=container)
+
     return
 
 
@@ -280,7 +282,76 @@ def format_auth_host_results(action=None, success=None, container=None, results=
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_host_results", drop_none=True)
 
-    debug_1(container=container)
+    join_format_auth_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def join_format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("join_format_auth_summary() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_format_auth_summary_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
+
+    # call connected block "format_auth_summary"
+    format_auth_summary(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_auth_summary() called")
+
+    template = """{0}{1}\n \n{2}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "format_auth_yes:formatted_data",
+        "format_auth_no:formatted_data",
+        "format_auth_host_results:formatted_data"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_summary")
+
+    add_comment_add_note_2(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def add_comment_add_note_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_comment_add_note_2() called")
+
+    format_auth_summary = phantom.get_format_data(name="format_auth_summary")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.comment(container=container, comment=format_auth_summary)
+    phantom.add_note(container=container, content=format_auth_summary, note_format="markdown", note_type="general", title="Auth Summary")
 
     return
 
