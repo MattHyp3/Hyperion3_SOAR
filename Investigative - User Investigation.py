@@ -262,7 +262,7 @@ def search_user_auth_hosts(action=None, success=None, container=None, results=No
 def format_auth_host_results(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_auth_host_results() called")
 
-    template = """How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n{2}{3}\n"""
+    template = """How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n {2}\n {3}\n"""
 
     # parameter list for template variable replacement
     parameters = [
