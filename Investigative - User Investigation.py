@@ -84,14 +84,18 @@ def format_query_user_auth(action=None, success=None, container=None, results=No
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("debug_1() called")
 
+    search_makeresults_hosts_result_data = phantom.collect2(container=container, datapath=["search_makeresults_hosts:action_result.data.*.hosts","search_makeresults_hosts:action_result.parameter.context.artifact_id"], action_results=results)
     format_host_results = phantom.get_format_data(name="format_host_results")
+    format_auth_host_results = phantom.get_format_data(name="format_auth_host_results")
+
+    search_makeresults_hosts_result_item_0 = [item[0] for item in search_makeresults_hosts_result_data]
 
     parameters = []
 
     parameters.append({
         "input_1": format_host_results,
-        "input_2": None,
-        "input_3": None,
+        "input_2": search_makeresults_hosts_result_item_0,
+        "input_3": format_auth_host_results,
         "input_4": None,
         "input_5": None,
         "input_6": None,
@@ -190,8 +194,6 @@ def format_auth_no(action=None, success=None, container=None, results=None, hand
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_no")
 
-    join_format_auth_summary(container=container)
-
     return
 
 
@@ -281,25 +283,7 @@ def format_auth_host_results(action=None, success=None, container=None, results=
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_host_results", drop_none=True)
 
-    join_format_auth_summary(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def join_format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("join_format_auth_summary() called")
-
-    # if the joined function has already been called, do nothing
-    if phantom.get_run_data(key="join_format_auth_summary_called"):
-        return
-
-    if phantom.completed(action_names=["search_makeresults_hosts"]):
-        # save the state that the joined function has now been called
-        phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
-
-        # call connected block "format_auth_summary"
-        format_auth_summary(container=container, handle=handle)
+    debug_1(container=container)
 
     return
 

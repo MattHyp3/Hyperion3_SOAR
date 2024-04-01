@@ -66,20 +66,6 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_10_to_port_11",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
-                    "id": "port_7_to_port_11",
-                    "sourceNode": "7",
-                    "sourcePort": "7_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
                     "id": "port_11_to_port_12",
                     "sourceNode": "11",
                     "sourcePort": "11_out",
@@ -106,9 +92,16 @@
                     "sourcePort": "13_out",
                     "targetNode": "14",
                     "targetPort": "14_in"
+                },
+                {
+                    "id": "port_10_to_port_4",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "895efbf79a5407ff7aacf1ed41d73f65da369dd4",
+            "hash": "1156a6e5921c5a101fcf12b8145a818e63b41e77",
             "nodes": {
                 "0": {
                     "data": {
@@ -192,7 +185,11 @@
                     "errors": {},
                     "id": "11",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 1340
                 },
@@ -633,8 +630,12 @@
                                     "format_host_results:formatted_data"
                                 ],
                                 "input_10": null,
-                                "input_2": "",
-                                "input_3": null,
+                                "input_2": [
+                                    "search_makeresults_hosts:action_result.data.*.hosts"
+                                ],
+                                "input_3": [
+                                    "format_auth_host_results:formatted_data"
+                                ],
                                 "input_4": null,
                                 "input_5": null,
                                 "input_6": null,
@@ -647,13 +648,9 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 260,
-                    "y": 1320
+                    "warnings": {},
+                    "x": 540,
+                    "y": 1580
                 },
                 "5": {
                     "data": {
@@ -843,7 +840,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T12:05:51.684653+00:00",
+    "create_time": "2024-04-01T12:08:08.598088+00:00",
     "draft_mode": false,
     "labels": [
         "*"
