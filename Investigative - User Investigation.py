@@ -308,13 +308,14 @@ def join_format_auth_summary(action=None, success=None, container=None, results=
 def format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_auth_summary() called")
 
-    template = """{0}{1}\n \n{2}\n"""
+    template = """{0}{1}\n \n{2}\n \n{3}\n"""
 
     # parameter list for template variable replacement
     parameters = [
         "format_auth_yes:formatted_data",
         "format_auth_no:formatted_data",
-        "format_auth_host_results:formatted_data"
+        "format_auth_host_results:formatted_data",
+        "format_auth_host_results:formatted_data.*"
     ]
 
     ################################################################################

@@ -94,7 +94,7 @@
                     "targetPort": "12_in"
                 }
             ],
-            "hash": "1d5698dcc4cd1b7e8e41d91336216edd56bf2fc3",
+            "hash": "ffeb7515ee37d2279964b2a787801215eae4a69e",
             "nodes": {
                 "0": {
                     "data": {
@@ -170,9 +170,10 @@
                         "parameters": [
                             "format_auth_yes:formatted_data",
                             "format_auth_no:formatted_data",
-                            "format_auth_host_results:formatted_data"
+                            "format_auth_host_results:formatted_data",
+                            "format_auth_host_results:formatted_data.*"
                         ],
-                        "template": "{0}{1}\n \n{2}\n",
+                        "template": "{0}{1}\n \n{2}\n \n{3}\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -596,6 +597,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 1260,
@@ -789,7 +793,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:27:03.541855+00:00",
+    "create_time": "2024-04-01T11:30:50.804857+00:00",
     "draft_mode": false,
     "labels": [
         "*"
