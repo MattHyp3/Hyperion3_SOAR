@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "5d3e43a8d95b9837526ffe897292c36415f8bcff",
+            "hash": "ef3c877fb747d033a3ad04031c15adfe912965be",
             "nodes": {
                 "0": {
                     "data": {
@@ -88,8 +88,9 @@
                             "pauseValue": 2
                         },
                         "parameters": {
-                            "command": "| makeresults",
-                            "query": "format_query_test:formatted_data",
+                            "command": "| tstats",
+                            "display": "count",
+                            "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
                             "search_mode": "smart"
                         },
                         "requiredParameters": [
@@ -299,7 +300,7 @@
                                 ],
                                 "input_10": null,
                                 "input_2": [
-                                    "run_query_1:action_result.data.*.test"
+                                    "run_query_1:action_result.data.*.count"
                                 ],
                                 "input_3": null,
                                 "input_4": null,
@@ -328,7 +329,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:22:01.428437+00:00",
+    "create_time": "2024-04-01T10:25:20.722922+00:00",
     "draft_mode": false,
     "labels": [
         "*"

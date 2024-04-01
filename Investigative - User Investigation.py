@@ -23,16 +23,14 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    format_query_test = phantom.get_format_data(name="format_query_test")
-
     parameters = []
 
-    if format_query_test is not None:
-        parameters.append({
-            "command": "| makeresults",
-            "search_mode": "smart",
-            "query": format_query_test,
-        })
+    parameters.append({
+        "command": "| tstats",
+        "search_mode": "smart",
+        "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
+        "display": "count",
+    })
 
     ################################################################################
     ## Custom Code Start
@@ -79,7 +77,7 @@ def format_query_test(action=None, success=None, container=None, results=None, h
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.status","run_query_1:action_result.data.*.test","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
+    run_query_1_result_data = phantom.collect2(container=container, datapath=["run_query_1:action_result.status","run_query_1:action_result.data.*.count","run_query_1:action_result.parameter.context.artifact_id"], action_results=results)
 
     run_query_1_result_item_0 = [item[0] for item in run_query_1_result_data]
     run_query_1_result_item_1 = [item[1] for item in run_query_1_result_data]
