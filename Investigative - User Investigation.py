@@ -262,12 +262,14 @@ def search_user_auth_hosts(action=None, success=None, container=None, results=No
 def format_auth_host_results(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_auth_host_results() called")
 
-    template = """How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n"""
+    template = """How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n{2}{3}\n"""
 
     # parameter list for template variable replacement
     parameters = [
         "search_user_auth_hosts:action_result.data.*.host_count",
-        "search_user_auth_hosts:action_result.data.*.host_list"
+        "search_user_auth_hosts:action_result.data.*.host_list",
+        "search_user_auth_hosts:action_result.data.*.content.host_list",
+        "search_user_auth_hosts:action_result.data.*.content.host_list[]"
     ]
 
     ################################################################################
@@ -308,14 +310,13 @@ def join_format_auth_summary(action=None, success=None, container=None, results=
 def format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_auth_summary() called")
 
-    template = """{0}{1}\n \n{2}\n \n{3}\n"""
+    template = """{0}{1}\n \n{2}\n \n"""
 
     # parameter list for template variable replacement
     parameters = [
         "format_auth_yes:formatted_data",
         "format_auth_no:formatted_data",
-        "format_auth_host_results:formatted_data",
-        "format_auth_host_results:formatted_data.*"
+        "format_auth_host_results:formatted_data"
     ]
 
     ################################################################################
