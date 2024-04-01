@@ -30,6 +30,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
         "search_mode": "smart",
         "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
         "display": "count",
+        "start_time": "-7d",
+        "end_time": "now()",
     })
 
     ################################################################################
