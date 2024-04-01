@@ -12,105 +12,26 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'event_id_filter' block
-    event_id_filter(container=container)
+    # call 'mark_evidence_artifact' block
+    mark_evidence_artifact(container=container)
 
     return
-
-@phantom.playbook_block()
-def event_id_filter(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("event_id_filter() called")
-
-    ################################################################################
-    # Only proceed if the event_id value is present. The event_id is also sometimes 
-    # called a Notable ID.
-    ################################################################################
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["artifact:*.cef.event_id", "!=", ""]
-        ],
-        name="event_id_filter:condition_1",
-        scope="all",
-        delimiter=",")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        mark_evidence_artifact(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
-
-    # collect filtered artifact ids and results for 'if' condition 2
-    matched_artifacts_2, matched_results_2 = phantom.condition(
-        container=container,
-        logical_operator="and",
-        conditions=[
-            ["artifact:*.cef.event_id", "!=", ""],
-            ["artifact:*.name", "==", "Field Values"]
-        ],
-        name="event_id_filter:condition_2",
-        scope="all",
-        delimiter=",")
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_2 or matched_results_2:
-        artifact_update_notable(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_2, filtered_results=matched_results_2)
-
-    return
-
-
-@phantom.playbook_block()
-def artifact_update_notable(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("artifact_update_notable() called")
-
-    filtered_artifact_0_data_event_id_filter = phantom.collect2(container=container, datapath=["filtered-data:event_id_filter:condition_2:artifact:*.id","filtered-data:event_id_filter:condition_2:artifact:*.id"], scope="all")
-
-    parameters = []
-
-    # build parameters list for 'artifact_update_notable' call
-    for filtered_artifact_0_item_event_id_filter in filtered_artifact_0_data_event_id_filter:
-        parameters.append({
-            "name": "Notable Artifact",
-            "tags": None,
-            "label": None,
-            "severity": None,
-            "cef_field": None,
-            "cef_value": None,
-            "input_json": None,
-            "artifact_id": filtered_artifact_0_item_event_id_filter[0],
-            "cef_data_type": None,
-        })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/artifact_update", parameters=parameters, name="artifact_update_notable")
-
-    return
-
 
 @phantom.playbook_block()
 def mark_evidence_artifact(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("mark_evidence_artifact() called")
 
     id_value = container.get("id", None)
-    filtered_artifact_0_data_event_id_filter = phantom.collect2(container=container, datapath=["filtered-data:event_id_filter:condition_1:artifact:*.id","filtered-data:event_id_filter:condition_1:artifact:*.id"], scope="all")
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"], scope="all")
 
     parameters = []
 
     # build parameters list for 'mark_evidence_artifact' call
-    for filtered_artifact_0_item_event_id_filter in filtered_artifact_0_data_event_id_filter:
+    for container_artifact_item in container_artifact_data:
         parameters.append({
             "container": id_value,
-            "content_type": "artifact_id",
-            "input_object": filtered_artifact_0_item_event_id_filter[0],
+            "content_type": "event_id",
+            "input_object": container_artifact_item[0],
         })
 
     ################################################################################
@@ -273,20 +194,20 @@ def update_notable(action=None, success=None, container=None, results=None, hand
     # Update the notable event  in Enterprise Security with a link back to this container
     ################################################################################
 
-    filtered_artifact_0_data_event_id_filter = phantom.collect2(container=container, datapath=["filtered-data:event_id_filter:condition_1:artifact:*.cef.event_id","filtered-data:event_id_filter:condition_1:artifact:*.id"], scope="all")
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"], scope="all")
     format_es_note = phantom.get_format_data(name="format_es_note")
 
     parameters = []
 
     # build parameters list for 'update_notable' call
-    for filtered_artifact_0_item_event_id_filter in filtered_artifact_0_data_event_id_filter:
-        if filtered_artifact_0_item_event_id_filter[0] is not None:
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
             parameters.append({
                 "status": "closed",
                 "comment": format_es_note,
-                "event_ids": filtered_artifact_0_item_event_id_filter[0],
+                "event_ids": container_artifact_item[0],
                 "wait_for_confirmation": True,
-                "context": {'artifact_id': filtered_artifact_0_item_event_id_filter[1]},
+                "context": {'artifact_id': container_artifact_item[1]},
             })
 
     ################################################################################
@@ -316,7 +237,7 @@ def format_event_name(action=None, success=None, container=None, results=None, h
 
     # parameter list for template variable replacement
     parameters = [
-        "filtered-data:event_id_filter:condition_1:artifact:*.cef.source"
+        "artifact:*.cef.source"
     ]
 
     ################################################################################
@@ -329,7 +250,7 @@ def format_event_name(action=None, success=None, container=None, results=None, h
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_event_name", scope="all")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_event_name", scope="all", drop_none=True)
 
     container_update_info(container=container)
 
@@ -341,22 +262,22 @@ def container_update_info(action=None, success=None, container=None, results=Non
     phantom.debug("container_update_info() called")
 
     id_value = container.get("id", None)
-    filtered_artifact_0_data_event_id_filter = phantom.collect2(container=container, datapath=["filtered-data:event_id_filter:condition_1:artifact:*.cef.urgency","filtered-data:event_id_filter:condition_1:artifact:*.cef.source","filtered-data:event_id_filter:condition_1:artifact:*.id"], scope="all")
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.urgency","artifact:*.cef.source","artifact:*.id"], scope="all")
     format_event_name = phantom.get_format_data(name="format_event_name")
 
     parameters = []
 
     # build parameters list for 'container_update_info' call
-    for filtered_artifact_0_item_event_id_filter in filtered_artifact_0_data_event_id_filter:
+    for container_artifact_item in container_artifact_data:
         parameters.append({
             "name": format_event_name,
             "tags": None,
             "label": None,
             "owner": None,
             "status": None,
-            "severity": filtered_artifact_0_item_event_id_filter[0],
+            "severity": container_artifact_item[0],
             "input_json": None,
-            "description": filtered_artifact_0_item_event_id_filter[1],
+            "description": container_artifact_item[1],
             "sensitivity": None,
             "container_input": id_value,
         })
@@ -380,22 +301,23 @@ def container_update_info(action=None, success=None, container=None, results=Non
 def artifact_update_severity(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("artifact_update_severity() called")
 
-    filtered_artifact_0_data_event_id_filter = phantom.collect2(container=container, datapath=["filtered-data:event_id_filter:condition_1:artifact:*.id","filtered-data:event_id_filter:condition_1:artifact:*.id"], scope="all")
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.id","artifact:*.id"], scope="all")
 
     parameters = []
 
     # build parameters list for 'artifact_update_severity' call
-    for filtered_artifact_0_item_event_id_filter in filtered_artifact_0_data_event_id_filter:
+    for container_artifact_item in container_artifact_data:
         parameters.append({
+            "artifact_id": container_artifact_item[0],
             "name": None,
-            "tags": None,
             "label": None,
             "severity": None,
             "cef_field": None,
             "cef_value": None,
-            "input_json": None,
-            "artifact_id": filtered_artifact_0_item_event_id_filter[0],
             "cef_data_type": None,
+            "tags": None,
+            "overwrite_tags": None,
+            "input_json": None,
         })
 
     ################################################################################
