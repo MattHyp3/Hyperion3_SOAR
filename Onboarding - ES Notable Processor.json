@@ -178,7 +178,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "a47b0050d0e4739004437149317ef9eb9aa8812f",
+            "hash": "25643e357a941b7711b2461ed1ccb35df2e43ee2",
             "nodes": {
                 "0": {
                     "data": {
@@ -1547,10 +1547,10 @@
             },
             "notes": "For detailed implementation see https://docs.splunk.com/Documentation/ESSOC/latest/user/Useplaybookpack",
             "origin": {
-                "playbook_id": 167,
-                "playbook_name": "Onboarding Notable Preprocess",
-                "playbook_repo_id": 2,
-                "playbook_repo_name": "local"
+                "playbook_id": 328,
+                "playbook_name": "Onboarding - Notable Preprocess",
+                "playbook_repo_id": 15,
+                "playbook_repo_name": "Hyperion3"
             }
         },
         "input_spec": null,
