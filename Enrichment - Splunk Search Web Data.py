@@ -109,7 +109,7 @@ def run_query(action=None, success=None, container=None, results=None, handle=No
         parameters.append({
             "query": format_risk_query,
             "command": "search",
-            "parse_only": True,
+            "parse_only": False,
             "attach_result": True,
         })
 
@@ -194,7 +194,7 @@ def results_decision(action=None, success=None, container=None, results=None, ha
 def zscaler_results_seen(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("zscaler_results_seen() called")
 
-    template = """Splunk results found as below\n\n{{code}}\nurl: {0}\nuser: {1}\n_time: {2}\nsrcip: {3}\naction: {4}\ndestip: {5}\ndomain: {6}\nsource: {7}\nstatus: {8}\nreferrer: {9}\nsourcetype: {10}\nthreatname: {11}\nuser_agent: {12}\nhttp_method: {13}\ncontent_type: {14}\nbytes_to_client: {15}\nbytes_to_server: {16}\n{{code}}\n"""
+    template = """Splunk results found as below\n\nurl: {0}\nuser: {1}\n_time: {2}\nsrcip: {3}\naction: {4}\ndestip: {5}\ndomain: {6}\nsource: {7}\nstatus: {8}\nreferrer: {9}\nsourcetype: {10}\nthreatname: {11}\nuser_agent: {12}\nhttp_method: {13}\ncontent_type: {14}\nbytes_to_client: {15}\nbytes_to_server: {16}\n\n"""
 
     # parameter list for template variable replacement
     parameters = [
@@ -229,6 +229,8 @@ def zscaler_results_seen(action=None, success=None, container=None, results=None
 
     phantom.format(container=container, template=template, parameters=parameters, name="zscaler_results_seen")
 
+    update_event_1(container=container)
+
     return
 
 
@@ -254,46 +256,6 @@ def zscaler_no_results(action=None, success=None, container=None, results=None, 
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="zscaler_no_results")
-
-    return
-
-
-@phantom.playbook_block()
-def add_note_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("add_note_2() called")
-
-    zscaler_no_results = phantom.get_format_data(name="zscaler_no_results")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.add_note(container=container, content=zscaler_no_results, note_format="markdown", note_type="general", title="Splunk search results")
-
-    return
-
-
-@phantom.playbook_block()
-def add_note_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("add_note_4() called")
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.add_note(container=container, content="search results added to Jira ticket", note_format="markdown", note_type="general", title="Splunk search results")
 
     return
 
@@ -477,6 +439,42 @@ def add_note_6(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=no_results, note_format="markdown", note_type="general", title="Splunk search results")
+
+    return
+
+
+@phantom.playbook_block()
+def update_event_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("update_event_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"])
+    zscaler_results_seen = phantom.get_format_data(name="zscaler_results_seen")
+
+    parameters = []
+
+    # build parameters list for 'update_event_1' call
+    for container_artifact_item in container_artifact_data:
+        if container_artifact_item[0] is not None:
+            parameters.append({
+                "event_ids": container_artifact_item[0],
+                "comment": zscaler_results_seen,
+                "wait_for_confirmation": True,
+                "context": {'artifact_id': container_artifact_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunkes"])
 
     return
 
