@@ -198,7 +198,7 @@ def format_auth_no(action=None, success=None, container=None, results=None, hand
 def format_query_auth_hosts(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_query_auth_hosts() called")
 
-    template = """dc(host) as host_count values(host) as host_list from datamodel=Authentication where Authentication.user=\"{0}\" by host"""
+    template = """dc(host) as host_count values(host) as host_list from datamodel=Authentication where Authentication.user=\"{0}\""""
 
     # parameter list for template variable replacement
     parameters = [
@@ -278,7 +278,7 @@ def format_auth_host_results(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_host_results")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_host_results", drop_none=True)
 
     debug_1(container=container)
 

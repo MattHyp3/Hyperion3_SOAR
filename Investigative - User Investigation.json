@@ -80,7 +80,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "d943c4a5bd3094016595d02e970090952fb81ce0",
+            "hash": "fd188a8592929c8c5b5077ed4f0fb8493c1043fa",
             "nodes": {
                 "0": {
                     "data": {
@@ -119,6 +119,7 @@
                         "advanced": {
                             "customName": "format_auth_host_results",
                             "customNameId": 0,
+                            "drop_none": true,
                             "join": []
                         },
                         "functionId": 5,
@@ -510,7 +511,7 @@
                         "parameters": [
                             "artifact:*.cef.suser"
                         ],
-                        "template": "dc(host) as host_count values(host) as host_list from datamodel=Authentication where Authentication.user=\"{0}\" by host",
+                        "template": "dc(host) as host_count values(host) as host_list from datamodel=Authentication where Authentication.user=\"{0}\"",
                         "type": "format"
                     },
                     "errors": {},
@@ -589,7 +590,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:17:07.201147+00:00",
+    "create_time": "2024-04-01T11:19:52.650110+00:00",
     "draft_mode": false,
     "labels": [
         "*"
