@@ -14,13 +14,21 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_3_to_port_4",
+                    "id": "port_3_to_port_2",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
                     "targetNode": "4",
                     "targetPort": "4_in"
                 }
             ],
+            "hash": "8f0d5f80e36e8899b2ccb0c230e2749e99884878",
             "nodes": {
                 "0": {
                     "data": {
@@ -80,7 +88,8 @@
                             "pauseValue": 2
                         },
                         "parameters": {
-                            "command": "search",
+                            "command": "| makeresults",
+                            "query": "format_query_test:formatted_data",
                             "search_mode": "smart"
                         },
                         "requiredParameters": [
@@ -105,8 +114,8 @@
                     "id": "2",
                     "type": "action",
                     "warnings": {},
-                    "x": 980,
-                    "y": 800
+                    "x": 960,
+                    "y": 680
                 },
                 "3": {
                     "data": {
@@ -119,7 +128,7 @@
                         "functionName": "format_query_test",
                         "id": "3",
                         "parameters": [],
-                        "template": "| makeresults \n| eval test=\"test\"\n",
+                        "template": "| eval test=\"test\"\n| table test",
                         "type": "format"
                     },
                     "errors": {},
@@ -286,11 +295,11 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "format_query_test:formatted_data"
+                                    "run_query_1:action_result.status"
                                 ],
                                 "input_10": null,
                                 "input_2": [
-                                    "format_query_test:formatted_data.*"
+                                    "run_query_1:action_result.data"
                                 ],
                                 "input_3": null,
                                 "input_4": null,
@@ -306,8 +315,8 @@
                     "id": "4",
                     "type": "utility",
                     "warnings": {},
-                    "x": 1040,
-                    "y": 680
+                    "x": 940,
+                    "y": 800
                 }
             },
             "notes": ""
@@ -319,7 +328,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:12:45.899354+00:00",
+    "create_time": "2024-04-01T10:19:18.762617+00:00",
     "draft_mode": false,
     "labels": [
         "*"
