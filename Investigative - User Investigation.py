@@ -194,6 +194,8 @@ def format_auth_no(action=None, success=None, container=None, results=None, hand
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_no")
 
+    join_format_auth_summary(container=container)
+
     return
 
 
@@ -283,7 +285,25 @@ def format_auth_host_results(action=None, success=None, container=None, results=
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_host_results", drop_none=True)
 
-    debug_1(container=container)
+    join_format_auth_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def join_format_auth_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("join_format_auth_summary() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_format_auth_summary_called"):
+        return
+
+    if phantom.completed(action_names=["search_makeresults_hosts"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
+
+        # call connected block "format_auth_summary"
+        format_auth_summary(container=container, handle=handle)
 
     return
 
@@ -313,7 +333,7 @@ def format_auth_summary(action=None, success=None, container=None, results=None,
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_summary")
 
-    add_note_2(container=container)
+    format_query_malware(container=container)
 
     return
 
@@ -382,6 +402,8 @@ def search_makeresults_hosts(action=None, success=None, container=None, results=
             "command": "| makeresults",
             "search_mode": "smart",
             "query": format_host_results,
+            "start_time": 1534737603,
+            "end_time": 1568916650,
         })
 
     ################################################################################
@@ -395,6 +417,239 @@ def search_makeresults_hosts(action=None, success=None, container=None, results=
     ################################################################################
 
     phantom.act("run query", parameters=parameters, name="search_makeresults_hosts", assets=["splunkes"], callback=format_auth_host_results)
+
+    return
+
+
+@phantom.playbook_block()
+def search_host_malware(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("search_host_malware() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_query_malware = phantom.get_format_data(name="format_query_malware")
+
+    parameters = []
+
+    if format_query_malware is not None:
+        parameters.append({
+            "command": "search",
+            "search_mode": "fast",
+            "start_time": 1534737603,
+            "end_time": 1568916650,
+            "query": format_query_malware,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("run query", parameters=parameters, name="search_host_malware", assets=["splunkes"], callback=decision_host_malware)
+
+    return
+
+
+@phantom.playbook_block()
+def format_query_malware(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_query_malware() called")
+
+    template = """count from datamodel=Malware where host IN ({0})\n| eval result = if(count > 0, \"1\", \"0\")\n| fields result"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "search_makeresults_hosts:action_result.data.*.hosts"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_query_malware")
+
+    search_host_malware(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def decision_host_malware(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("decision_host_malware() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["search_host_malware:action_result.data.*.result", ">", 0]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        format_malware_yes(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    format_malware_no(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_malware_yes(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_malware_yes() called")
+
+    template = """Has Malware been detected on any of the hosts of interest ({0})?\n**Yes**\n\nStarting Incident Response\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "search_makeresults_hosts:action_result.data.*.hosts"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_malware_yes")
+
+    magic_incident_response(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_malware_no(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_malware_no() called")
+
+    template = """Has Malware been detected on any of the hosts of interest ({0})?\n**No**"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "search_makeresults_hosts:action_result.data.*.hosts"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_malware_no")
+
+    join_format_malware_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def magic_incident_response(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("magic_incident_response() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    join_format_malware_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def join_format_malware_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("join_format_malware_summary() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_format_malware_summary_called"):
+        return
+
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_format_malware_summary_called", value="format_malware_summary")
+
+    # call connected block "format_malware_summary"
+    format_malware_summary(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_malware_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_malware_summary() called")
+
+    template = """{0}{1}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "format_malware_yes:formatted_data",
+        "format_malware_no:formatted_data"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_malware_summary", drop_none=True)
+
+    format_total_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_total_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_total_summary() called")
+
+    template = """**Incident Summary**\n---\n \n{0} \n{1} \n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "format_auth_summary:formatted_data",
+        "format_malware_summary:formatted_data"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_total_summary")
 
     return
 
