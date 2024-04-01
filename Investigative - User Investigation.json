@@ -94,21 +94,21 @@
                     "targetPort": "13_in"
                 },
                 {
-                    "id": "port_13_to_port_14",
-                    "sourceNode": "13",
-                    "sourcePort": "13_out",
-                    "targetNode": "14",
-                    "targetPort": "14_in"
-                },
-                {
                     "id": "port_14_to_port_10",
                     "sourceNode": "14",
                     "sourcePort": "14_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_13_to_port_4",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "09d05256c8f26d1c12c6b96fc783899ba2aefa6f",
+            "hash": "cecbb89b1f8324fa35d8300024b0c5af4380c44f",
             "nodes": {
                 "0": {
                     "data": {
@@ -163,7 +163,11 @@
                     "errors": {},
                     "id": "10",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 560,
                     "y": 1440
                 },
@@ -192,7 +196,11 @@
                     "errors": {},
                     "id": "11",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 980,
                     "y": 1340
                 },
@@ -386,9 +394,13 @@
                     "errors": {},
                     "id": "14",
                     "type": "action",
-                    "warnings": {},
-                    "x": 584,
-                    "y": 1324.611083984375
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
+                    "x": 580,
+                    "y": 1320
                 },
                 "2": {
                     "data": {
@@ -630,12 +642,10 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "format_auth_yes:formatted_data"
+                                    "format_host_results:formatted_data"
                                 ],
                                 "input_10": null,
-                                "input_2": [
-                                    "format_auth_host_results:formatted_data"
-                                ],
+                                "input_2": "",
                                 "input_3": null,
                                 "input_4": null,
                                 "input_5": null,
@@ -649,16 +659,9 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
-                    "x": 1260,
-                    "y": 1460
+                    "warnings": {},
+                    "x": 260,
+                    "y": 1320
                 },
                 "5": {
                     "data": {
@@ -848,7 +851,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:55:55.911086+00:00",
+    "create_time": "2024-04-01T11:58:55.059005+00:00",
     "draft_mode": false,
     "labels": [
         "*"

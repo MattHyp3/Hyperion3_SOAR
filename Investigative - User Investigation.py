@@ -84,14 +84,13 @@ def format_query_user_auth(action=None, success=None, container=None, results=No
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    format_auth_yes = phantom.get_format_data(name="format_auth_yes")
-    format_auth_host_results = phantom.get_format_data(name="format_auth_host_results")
+    format_host_results = phantom.get_format_data(name="format_host_results")
 
     parameters = []
 
     parameters.append({
-        "input_1": format_auth_yes,
-        "input_2": format_auth_host_results,
+        "input_1": format_host_results,
+        "input_2": None,
         "input_3": None,
         "input_4": None,
         "input_5": None,
@@ -379,7 +378,7 @@ def format_host_results(action=None, success=None, container=None, results=None,
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_host_results")
 
-    search_makeresults_hosts(container=container)
+    debug_1(container=container)
 
     return
 
