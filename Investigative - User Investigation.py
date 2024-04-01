@@ -378,7 +378,7 @@ def format_host_results(action=None, success=None, container=None, results=None,
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_host_results")
 
-    debug_1(container=container)
+    search_makeresults_hosts(container=container)
 
     return
 
