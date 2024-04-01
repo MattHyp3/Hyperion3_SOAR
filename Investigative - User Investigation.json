@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "ac3fd8d368ef27fbe810de2be77715b5a4e3b31c",
+            "hash": "7623a3b55a70aeb45d26960bd23e590d2dcd43d4",
             "nodes": {
                 "0": {
                     "data": {
@@ -91,7 +91,7 @@
                             "command": "| tstats",
                             "display": "count",
                             "end_time": "-0d",
-                            "query": "",
+                            "query": "format_query_test:formatted_data",
                             "search_mode": "smart",
                             "start_time": "-7d"
                         },
@@ -333,7 +333,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:28:13.963239+00:00",
+    "create_time": "2024-04-01T10:28:37.297038+00:00",
     "draft_mode": false,
     "labels": [
         "*"

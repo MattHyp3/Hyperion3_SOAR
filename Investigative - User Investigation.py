@@ -23,16 +23,19 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
+    format_query_test = phantom.get_format_data(name="format_query_test")
+
     parameters = []
 
-    parameters.append({
-        "command": "| tstats",
-        "search_mode": "smart",
-        "query": "",
-        "display": "count",
-        "start_time": "-7d",
-        "end_time": "-0d",
-    })
+    if format_query_test is not None:
+        parameters.append({
+            "command": "| tstats",
+            "search_mode": "smart",
+            "query": format_query_test,
+            "display": "count",
+            "start_time": "-7d",
+            "end_time": "-0d",
+        })
 
     ################################################################################
     ## Custom Code Start
