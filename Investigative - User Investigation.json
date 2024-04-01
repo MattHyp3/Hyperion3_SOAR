@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "7623a3b55a70aeb45d26960bd23e590d2dcd43d4",
+            "hash": "5e231b0466ddd8e6c31cea6b077d6ef41f3adbe6",
             "nodes": {
                 "0": {
                     "data": {
@@ -44,7 +44,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999997
                 },
                 "1": {
                     "data": {
@@ -90,10 +90,10 @@
                         "parameters": {
                             "command": "| tstats",
                             "display": "count",
-                            "end_time": "-0d",
+                            "end_time": "1568916650",
                             "query": "format_query_test:formatted_data",
                             "search_mode": "smart",
-                            "start_time": "-7d"
+                            "start_time": "1534737603"
                         },
                         "requiredParameters": [
                             {
@@ -333,7 +333,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:28:37.297038+00:00",
+    "create_time": "2024-04-01T10:55:13.216803+00:00",
     "draft_mode": false,
     "labels": [
         "*"

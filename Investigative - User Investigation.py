@@ -33,8 +33,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
             "search_mode": "smart",
             "query": format_query_test,
             "display": "count",
-            "start_time": "-7d",
-            "end_time": "-0d",
+            "start_time": 1534737603,
+            "end_time": 1568916650,
         })
 
     ################################################################################
