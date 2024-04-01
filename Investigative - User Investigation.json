@@ -179,8 +179,68 @@
                     "sourcePort": "22_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_1",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_23_to_port_24",
+                    "sourceNode": "23",
+                    "sourcePort": "23_out",
+                    "targetNode": "24",
+                    "targetPort": "24_in"
+                },
+                {
+                    "id": "port_24_to_port_25",
+                    "sourceNode": "24",
+                    "sourcePort": "24_out",
+                    "targetNode": "25",
+                    "targetPort": "25_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_25_to_port_26",
+                    "sourceNode": "25",
+                    "sourcePort": "25_out",
+                    "targetNode": "26",
+                    "targetPort": "26_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_25_to_port_27",
+                    "sourceNode": "25",
+                    "sourcePort": "25_out",
+                    "targetNode": "27",
+                    "targetPort": "27_in"
+                },
+                {
+                    "id": "port_26_to_port_28",
+                    "sourceNode": "26",
+                    "sourcePort": "26_out",
+                    "targetNode": "28",
+                    "targetPort": "28_in"
+                },
+                {
+                    "id": "port_28_to_port_29",
+                    "sourceNode": "28",
+                    "sourcePort": "28_out",
+                    "targetNode": "29",
+                    "targetPort": "29_in"
                 }
             ],
+            "hash": "f10d18483517a1f8bd60d41e5686d6e8fcd2262f",
             "nodes": {
                 "0": {
                     "data": {
@@ -211,8 +271,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1340,
-                    "y": 2660
+                    "x": 1320,
+                    "y": 2080
                 },
                 "10": {
                     "data": {
@@ -379,8 +439,8 @@
                     "id": "12",
                     "type": "utility",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 2560
+                    "x": 1300,
+                    "y": 1960
                 },
                 "13": {
                     "data": {
@@ -520,8 +580,8 @@
                     "id": "15",
                     "type": "action",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 1700
+                    "x": 1580,
+                    "y": 620
                 },
                 "16": {
                     "data": {
@@ -543,8 +603,8 @@
                     "id": "16",
                     "type": "format",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 1600
+                    "x": 1580,
+                    "y": 500
                 },
                 "17": {
                     "data": {
@@ -594,8 +654,8 @@
                     "id": "17",
                     "type": "decision",
                     "warnings": {},
-                    "x": 1400,
-                    "y": 1860
+                    "x": 1660,
+                    "y": 720
                 },
                 "18": {
                     "data": {
@@ -617,8 +677,8 @@
                     "id": "18",
                     "type": "format",
                     "warnings": {},
-                    "x": 1160,
-                    "y": 2000
+                    "x": 1440,
+                    "y": 880
                 },
                 "19": {
                     "data": {
@@ -640,8 +700,8 @@
                     "id": "19",
                     "type": "format",
                     "warnings": {},
-                    "x": 1480,
-                    "y": 2000
+                    "x": 1720,
+                    "y": 880
                 },
                 "2": {
                     "data": {
@@ -721,8 +781,8 @@
                     "id": "20",
                     "type": "code",
                     "warnings": {},
-                    "x": 1160,
-                    "y": 2120
+                    "x": 1440,
+                    "y": 1000
                 },
                 "21": {
                     "data": {
@@ -749,8 +809,8 @@
                     "id": "21",
                     "type": "format",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 2260
+                    "x": 1580,
+                    "y": 1600
                 },
                 "22": {
                     "data": {
@@ -774,8 +834,296 @@
                     "id": "22",
                     "type": "format",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 2460
+                    "x": 1300,
+                    "y": 1840
+                },
+                "23": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_query_email",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 13,
+                        "functionName": "format_query_email",
+                        "id": "23",
+                        "parameters": [],
+                        "template": "",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "23",
+                    "type": "format",
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 2180,
+                    "y": 500
+                },
+                "24": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "search_user_email",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 5,
+                        "functionName": "search_user_email",
+                        "id": "24",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "search",
+                            "query": "tba",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "24",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 2180,
+                    "y": 620
+                },
+                "25": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "yes",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "no",
+                                "display": "Else",
+                                "logic": "and",
+                                "type": "else"
+                            }
+                        ],
+                        "functionId": 3,
+                        "functionName": "decision_3",
+                        "id": "25",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "25",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 2260,
+                    "y": 720
+                },
+                "26": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_email_yes",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 14,
+                        "functionName": "format_email_yes",
+                        "id": "26",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "26",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 2020,
+                    "y": 880
+                },
+                "27": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_email_no",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 15,
+                        "functionName": "format_email_no",
+                        "id": "27",
+                        "parameters": [],
+                        "template": "",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "27",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 2340,
+                    "y": 880
+                },
+                "28": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "search_received_email",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 6,
+                        "functionName": "search_received_email",
+                        "id": "28",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "search",
+                            "query": "tba",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "28",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 2020,
+                    "y": 1000
+                },
+                "29": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "search_sent_email",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 7,
+                        "functionName": "search_sent_email",
+                        "id": "29",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "search",
+                            "query": "tba",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "29",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 2020,
+                    "y": 1100
                 },
                 "3": {
                     "data": {
@@ -981,10 +1329,13 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
-                    "x": 1640,
-                    "y": 2560
+                    "x": 1620,
+                    "y": 1960
                 },
                 "5": {
                     "data": {
@@ -1175,7 +1526,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T12:30:20.707914+00:00",
+    "create_time": "2024-04-01T12:55:20.257872+00:00",
     "draft_mode": false,
     "labels": [
         "*"
