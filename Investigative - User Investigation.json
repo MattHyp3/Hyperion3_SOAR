@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "4526fff79e79f8af8a51e2d355e802c9890c1514",
+            "hash": "51e4b19cdd8da1a9736ace91d69dc21b2be603e7",
             "nodes": {
                 "0": {
                     "data": {
@@ -299,7 +299,7 @@
                                 ],
                                 "input_10": null,
                                 "input_2": [
-                                    "run_query_1:action_result.data.test"
+                                    "run_query_1:action_result.data{}.test"
                                 ],
                                 "input_3": null,
                                 "input_4": null,
@@ -328,7 +328,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:20:26.677073+00:00",
+    "create_time": "2024-04-01T10:21:39.642482+00:00",
     "draft_mode": false,
     "labels": [
         "*"
