@@ -28,7 +28,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "78b9420a43a6e07bba0bfe7672d929078b8af1c5",
+            "hash": "d0d4b81a353170fbe5dd2c11087bf83e7c2e3684",
             "nodes": {
                 "0": {
                     "data": {
@@ -90,7 +90,7 @@
                         "parameters": {
                             "command": "| tstats",
                             "display": "count",
-                            "end_time": "now()",
+                            "end_time": "-0d",
                             "query": "count from datamodel=Authentication where Authentication.user=\"admin\"",
                             "search_mode": "smart",
                             "start_time": "-7d"
@@ -331,7 +331,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T10:26:02.052321+00:00",
+    "create_time": "2024-04-01T10:26:46.087262+00:00",
     "draft_mode": false,
     "labels": [
         "*"
