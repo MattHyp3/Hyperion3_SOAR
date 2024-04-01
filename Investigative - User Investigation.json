@@ -108,7 +108,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "cecbb89b1f8324fa35d8300024b0c5af4380c44f",
+            "hash": "2d64d1c5a1080a89a2a1972e272246a039bd32da",
             "nodes": {
                 "0": {
                     "data": {
@@ -329,7 +329,7 @@
                         "functionName": "format_host_results",
                         "id": "13",
                         "parameters": [
-                            "search_user_auth_hosts:action_result.data.*.content.host_list"
+                            "search_user_auth_hosts:action_result.data.*.host_list"
                         ],
                         "template": "| eval _raw = \"{0}\"\n| rex field=_raw max_match=0 \"'(?<host>[^']+)'\"\n| eval hosts = mvjoin(host,\",\")\n| fields hosts\n",
                         "type": "format"
@@ -397,6 +397,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 580,
@@ -851,7 +854,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:58:55.059005+00:00",
+    "create_time": "2024-04-01T12:03:56.709879+00:00",
     "draft_mode": false,
     "labels": [
         "*"

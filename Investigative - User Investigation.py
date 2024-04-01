@@ -363,7 +363,7 @@ def format_host_results(action=None, success=None, container=None, results=None,
 
     # parameter list for template variable replacement
     parameters = [
-        "search_user_auth_hosts:action_result.data.*.content.host_list"
+        "search_user_auth_hosts:action_result.data.*.host_list"
     ]
 
     ################################################################################
