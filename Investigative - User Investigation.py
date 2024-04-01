@@ -342,7 +342,7 @@ def format_auth_summary(action=None, success=None, container=None, results=None,
 def add_note_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_note_2() called")
 
-    format_auth_summary = phantom.get_format_data(name="format_auth_summary")
+    format_total_summary = phantom.get_format_data(name="format_total_summary")
 
     ################################################################################
     ## Custom Code Start
@@ -354,7 +354,7 @@ def add_note_2(action=None, success=None, container=None, results=None, handle=N
     ## Custom Code End
     ################################################################################
 
-    phantom.add_note(container=container, content=format_auth_summary, note_format="markdown", note_type="general", title="Auth Summary")
+    phantom.add_note(container=container, content=format_total_summary, note_format="markdown", note_type="general", title="Auth Summary")
 
     return
 
@@ -650,6 +650,8 @@ def format_total_summary(action=None, success=None, container=None, results=None
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_total_summary")
+
+    add_note_2(container=container)
 
     return
 
