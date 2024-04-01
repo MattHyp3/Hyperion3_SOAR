@@ -66,13 +66,6 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_9_to_port_10",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
                     "id": "port_10_to_port_11",
                     "sourceNode": "10",
                     "sourcePort": "10_out",
@@ -92,9 +85,30 @@
                     "sourcePort": "11_out",
                     "targetNode": "12",
                     "targetPort": "12_in"
+                },
+                {
+                    "id": "port_9_to_port_13",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "id": "port_13_to_port_14",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
+                },
+                {
+                    "id": "port_14_to_port_10",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "957a88604e0394387999f89957d509a6e9568d8e",
+            "hash": "d698aa1f53e9aa3ae106604b8cd13aaffa95b253",
             "nodes": {
                 "0": {
                     "data": {
@@ -152,8 +166,8 @@
                     "id": "10",
                     "type": "format",
                     "warnings": {},
-                    "x": 820,
-                    "y": 1220
+                    "x": 560,
+                    "y": 1440
                 },
                 "11": {
                     "data": {
@@ -190,7 +204,7 @@
                             "join": []
                         },
                         "functionId": 2,
-                        "functionName": "add_comment_add_note_2",
+                        "functionName": "add_note_2",
                         "id": "12",
                         "loop": {
                             "enabled": false,
@@ -271,36 +285,6 @@
                                 ],
                                 "label": "add note",
                                 "name": "add_note"
-                            },
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
                             }
                         },
                         "utilityType": "api",
@@ -318,14 +302,6 @@
                                 "note_format": "markdown",
                                 "note_type": "general",
                                 "title": "Auth Summary"
-                            },
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "format_auth_summary:formatted_data"
                             }
                         }
                     },
@@ -335,6 +311,86 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1460
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_host_results",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 7,
+                        "functionName": "format_host_results",
+                        "id": "13",
+                        "parameters": [
+                            "search_user_auth_hosts:action_result.data.*.content.host_list"
+                        ],
+                        "template": "| eval _raw = \"{0}\"\n| rex field=_raw max_match=0 \"'(?<host>[^']+)'\"\n| eval hosts = mvjoin(host,\",\")\n| fields hosts\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 620,
+                    "y": 1220
+                },
+                "14": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "search_makeresults_hosts",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 3,
+                        "functionName": "search_makeresults_hosts",
+                        "id": "14",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "| makeresults",
+                            "query": "format_host_results:formatted_data",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 584,
+                    "y": 1324.611083984375
                 },
                 "2": {
                     "data": {
@@ -598,9 +654,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 1260,
@@ -794,7 +847,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T11:36:40.022709+00:00",
+    "create_time": "2024-04-01T11:55:02.715778+00:00",
     "draft_mode": false,
     "labels": [
         "*"

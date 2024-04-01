@@ -253,7 +253,7 @@ def search_user_auth_hosts(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="search_user_auth_hosts", assets=["splunkes"], callback=format_auth_host_results)
+    phantom.act("run query", parameters=parameters, name="search_user_auth_hosts", assets=["splunkes"], callback=format_host_results)
 
     return
 
@@ -297,11 +297,12 @@ def join_format_auth_summary(action=None, success=None, container=None, results=
     if phantom.get_run_data(key="join_format_auth_summary_called"):
         return
 
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
+    if phantom.completed(action_names=["search_makeresults_hosts"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
 
-    # call connected block "format_auth_summary"
-    format_auth_summary(container=container, handle=handle)
+        # call connected block "format_auth_summary"
+        format_auth_summary(container=container, handle=handle)
 
     return
 
@@ -331,14 +332,14 @@ def format_auth_summary(action=None, success=None, container=None, results=None,
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_summary")
 
-    add_comment_add_note_2(container=container)
+    add_note_2(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def add_comment_add_note_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("add_comment_add_note_2() called")
+def add_note_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_note_2() called")
 
     format_auth_summary = phantom.get_format_data(name="format_auth_summary")
 
@@ -352,8 +353,67 @@ def add_comment_add_note_2(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.comment(container=container, comment=format_auth_summary)
     phantom.add_note(container=container, content=format_auth_summary, note_format="markdown", note_type="general", title="Auth Summary")
+
+    return
+
+
+@phantom.playbook_block()
+def format_host_results(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_host_results() called")
+
+    template = """| eval _raw = \"{0}\"\n| rex field=_raw max_match=0 \"'(?<host>[^']+)'\"\n| eval hosts = mvjoin(host,\",\")\n| fields hosts\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "search_user_auth_hosts:action_result.data.*.content.host_list"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_host_results")
+
+    search_makeresults_hosts(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def search_makeresults_hosts(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("search_makeresults_hosts() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_host_results = phantom.get_format_data(name="format_host_results")
+
+    parameters = []
+
+    if format_host_results is not None:
+        parameters.append({
+            "command": "| makeresults",
+            "search_mode": "smart",
+            "query": format_host_results,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("run query", parameters=parameters, name="search_makeresults_hosts", assets=["splunkes"], callback=format_auth_host_results)
 
     return
 
