@@ -179,7 +179,7 @@ def format_auth_no(action=None, success=None, container=None, results=None, hand
 
     # parameter list for template variable replacement
     parameters = [
-        ""
+        "artifact:*.cef.suser"
     ]
 
     ################################################################################

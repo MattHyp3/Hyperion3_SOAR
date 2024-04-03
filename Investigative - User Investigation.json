@@ -247,7 +247,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "6025f2b09e8c3fbd92ceb28641a0faf83e9dbdaa",
+            "hash": "ee397ef42aa75477543b1d1edb071c80dc579ae0",
             "nodes": {
                 "0": {
                     "data": {
@@ -861,7 +861,11 @@
                     "errors": {},
                     "id": "23",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 2180,
                     "y": 500
                 },
@@ -1264,6 +1268,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 1900,
@@ -1566,6 +1573,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 1620,
@@ -1656,7 +1666,7 @@
                         "functionName": "format_auth_no",
                         "id": "7",
                         "parameters": [
-                            ""
+                            "artifact:*.cef.suser"
                         ],
                         "template": "Has user {0} has been active in the environment in the last seven days?\n**No**",
                         "type": "format"
@@ -1760,7 +1770,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-03T11:58:08.008052+00:00",
+    "create_time": "2024-04-03T12:08:19.051489+00:00",
     "draft_mode": false,
     "labels": [
         "*"
