@@ -356,8 +356,6 @@ def add_note_2(action=None, success=None, container=None, results=None, handle=N
 
     phantom.add_note(container=container, content=format_total_summary, note_format="markdown", note_type="general", title="Auth Summary")
 
-    add_note_3(container=container)
-
     return
 
 
