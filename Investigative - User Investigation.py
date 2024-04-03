@@ -356,7 +356,7 @@ def add_note_2(action=None, success=None, container=None, results=None, handle=N
 
     phantom.add_note(container=container, content=format_total_summary, note_format="markdown", note_type="general", title="Auth Summary")
 
-    debug_1(container=container)
+    add_note_3(container=container)
 
     return
 
@@ -829,6 +829,54 @@ def search_sent_email(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.act("run query", parameters=parameters, name="search_sent_email", assets=["splunkes"])
+
+    return
+
+
+@phantom.playbook_block()
+def add_note_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_note_3() called")
+
+    search_user_auth_hosts_result_data = phantom.collect2(container=container, datapath=["search_user_auth_hosts:action_result.data.*.host_list"], action_results=results)
+
+    search_user_auth_hosts_result_item_0 = [item[0] for item in search_user_auth_hosts_result_data]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_note(container=container, content=search_user_auth_hosts_result_item_0, note_format="markdown", note_type="general", title="Initial String Value")
+
+    add_note_4(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def add_note_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("add_note_4() called")
+
+    search_makeresults_hosts_result_data = phantom.collect2(container=container, datapath=["search_makeresults_hosts:action_result.data.*.hosts"], action_results=results)
+
+    search_makeresults_hosts_result_item_0 = [item[0] for item in search_makeresults_hosts_result_data]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_note(container=container, content=search_makeresults_hosts_result_item_0, note_format="markdown", note_type="general", title="Modified String Value")
 
     return
 
