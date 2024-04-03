@@ -298,12 +298,11 @@ def join_format_auth_summary(action=None, success=None, container=None, results=
     if phantom.get_run_data(key="join_format_auth_summary_called"):
         return
 
-    if phantom.completed(action_names=["search_makeresults_hosts"]):
-        # save the state that the joined function has now been called
-        phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
+    # save the state that the joined function has now been called
+    phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
 
-        # call connected block "format_auth_summary"
-        format_auth_summary(container=container, handle=handle)
+    # call connected block "format_auth_summary"
+    format_auth_summary(container=container, handle=handle)
 
     return
 
