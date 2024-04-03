@@ -181,13 +181,6 @@
                     "targetPort": "12_in"
                 },
                 {
-                    "id": "port_12_to_port_1",
-                    "sourceNode": "12",
-                    "sourcePort": "12_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
-                },
-                {
                     "id": "port_23_to_port_24",
                     "sourceNode": "23",
                     "sourcePort": "23_out",
@@ -238,9 +231,16 @@
                     "sourcePort": "28_out",
                     "targetNode": "29",
                     "targetPort": "29_in"
+                },
+                {
+                    "id": "port_12_to_port_4",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "f10d18483517a1f8bd60d41e5686d6e8fcd2262f",
+            "hash": "5e4f71374632ff3862fdb61c87c9c8591b8aa52d",
             "nodes": {
                 "0": {
                     "data": {
@@ -256,7 +256,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999997
+                    "y": 419.9999999999996
                 },
                 "1": {
                     "data": {
@@ -1305,15 +1305,13 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "format_host_results:formatted_data"
+                                    "search_user_auth_hosts:action_result.data.*.host_list"
                                 ],
                                 "input_10": null,
                                 "input_2": [
                                     "search_makeresults_hosts:action_result.data.*.hosts"
                                 ],
-                                "input_3": [
-                                    "format_auth_host_results:formatted_data"
-                                ],
+                                "input_3": "",
                                 "input_4": null,
                                 "input_5": null,
                                 "input_6": null,
@@ -1326,14 +1324,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 1620,
                     "y": 1960
                 },
@@ -1526,7 +1517,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T12:55:20.257872+00:00",
+    "create_time": "2024-04-03T08:18:56.734158+00:00",
     "draft_mode": false,
     "labels": [
         "*"
