@@ -84,18 +84,18 @@ def format_query_user_auth(action=None, success=None, container=None, results=No
 def debug_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("debug_1() called")
 
-    search_user_auth_hosts_result_data = phantom.collect2(container=container, datapath=["search_user_auth_hosts:action_result.data.*.host_list","search_user_auth_hosts:action_result.parameter.context.artifact_id"], action_results=results)
-    search_makeresults_hosts_result_data = phantom.collect2(container=container, datapath=["search_makeresults_hosts:action_result.data.*.hosts","search_makeresults_hosts:action_result.parameter.context.artifact_id"], action_results=results)
+    search_user_auth_hosts_result_data = phantom.collect2(container=container, datapath=["search_user_auth_hosts:action_result.data.*.host_list","search_user_auth_hosts:action_result.data","search_user_auth_hosts:action_result.data.*.content","search_user_auth_hosts:action_result.parameter.context.artifact_id"], action_results=results)
 
     search_user_auth_hosts_result_item_0 = [item[0] for item in search_user_auth_hosts_result_data]
-    search_makeresults_hosts_result_item_0 = [item[0] for item in search_makeresults_hosts_result_data]
+    search_user_auth_hosts_result_item_1 = [item[1] for item in search_user_auth_hosts_result_data]
+    search_user_auth_hosts_result_item_2 = [item[2] for item in search_user_auth_hosts_result_data]
 
     parameters = []
 
     parameters.append({
         "input_1": search_user_auth_hosts_result_item_0,
-        "input_2": search_makeresults_hosts_result_item_0,
-        "input_3": None,
+        "input_2": search_user_auth_hosts_result_item_1,
+        "input_3": search_user_auth_hosts_result_item_2,
         "input_4": None,
         "input_5": None,
         "input_6": None,
