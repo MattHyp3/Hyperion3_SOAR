@@ -256,7 +256,7 @@ def search_user_auth_hosts(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="search_user_auth_hosts", assets=["splunkes"], callback=debug_1)
+    phantom.act("run query", parameters=parameters, name="search_user_auth_hosts", assets=["splunkes"], callback=format_host_results)
 
     return
 
