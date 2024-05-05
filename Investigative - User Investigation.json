@@ -66,13 +66,6 @@
                     "targetPort": "9_in"
                 },
                 {
-                    "id": "port_9_to_port_13",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "13",
-                    "targetPort": "13_in"
-                },
-                {
                     "id": "port_14_to_port_10",
                     "sourceNode": "14",
                     "sourcePort": "14_out",
@@ -245,9 +238,16 @@
                     "sourcePort": "12_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_9_to_port_4",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
                 }
             ],
-            "hash": "f501fe3b0f7836b6877e6c6dcf6599f54b7546cf",
+            "hash": "37541ddfe4bd4d22060f0074004fe8c85da9e658",
             "nodes": {
                 "0": {
                     "data": {
@@ -263,7 +263,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999996
+                    "y": 419.9999999999995
                 },
                 "1": {
                     "data": {
@@ -302,7 +302,11 @@
                     "errors": {},
                     "id": "10",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 820,
                     "y": 1460
                 },
@@ -331,7 +335,11 @@
                     "errors": {},
                     "id": "11",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 1000,
                     "y": 1600
                 },
@@ -468,7 +476,11 @@
                     "errors": {},
                     "id": "13",
                     "type": "format",
-                    "warnings": {},
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
                     "x": 820,
                     "y": 1240
                 },
@@ -1573,13 +1585,10 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
-                    "x": 1620,
-                    "y": 1960
+                    "x": 1080,
+                    "y": 1240
                 },
                 "5": {
                     "data": {
@@ -1770,7 +1779,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-03T12:10:56.321383+00:00",
+    "create_time": "2024-05-05T08:21:07.275923+00:00",
     "draft_mode": false,
     "labels": [
         "*"
