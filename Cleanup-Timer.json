@@ -33,7 +33,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "170457c4d91a2d02c49637fd1200de5314a623a4",
+            "hash": "bbaf63fed068c9c99e43a7fe003acb62b64434cf",
             "nodes": {
                 "0": {
                     "data": {
@@ -133,7 +133,11 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
-                    "warnings": {},
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
                     "x": 980,
                     "y": 680
                 },
@@ -202,7 +206,7 @@
         "version": "6.2.0.355"
     },
     "create_time": "2024-05-06T03:33:46.076810+00:00",
-    "draft_mode": true,
+    "draft_mode": false,
     "labels": [
         "timer"
     ],
