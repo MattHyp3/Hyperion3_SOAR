@@ -12,13 +12,6 @@
                     "sourcePort": "0_out",
                     "targetNode": "2",
                     "targetPort": "2_in"
-                },
-                {
-                    "id": "port_2_to_port_1",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
                 }
             ],
             "hash": "bbaf63fed068c9c99e43a7fe003acb62b64434cf",
@@ -53,7 +46,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 740
+                    "y": 860
                 },
                 "2": {
                     "data": {
