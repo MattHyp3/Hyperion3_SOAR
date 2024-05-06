@@ -101,7 +101,7 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
     # parameter list for template variable replacement
     parameters = [
-        "refang_url:custom_function:refanged_urls"
+        "refang_url:custom_function:refanged_url"
     ]
 
     ################################################################################

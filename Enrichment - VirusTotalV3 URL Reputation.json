@@ -115,7 +115,7 @@
                     "targetPort": "13_in"
                 }
             ],
-            "hash": "4dfd527d4c05b3c9f201e1e4f0cc3da9748bbad8",
+            "hash": "c758c2c31a5b22dd9676cbe7afceb52acbafd203",
             "nodes": {
                 "0": {
                     "data": {
@@ -512,8 +512,8 @@
                     "id": "13",
                     "type": "utility",
                     "warnings": {},
-                    "x": 300,
-                    "y": 580
+                    "x": 280,
+                    "y": 620
                 },
                 "2": {
                     "data": {
@@ -578,7 +578,7 @@
                         "functionName": "fanged_urls",
                         "id": "4",
                         "parameters": [
-                            "refang_url:custom_function:refanged_urls"
+                            "refang_url:custom_function:refanged_url"
                         ],
                         "template": "%%\n{0}\n%%",
                         "type": "format"
@@ -812,7 +812,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:47:12.886535+00:00",
+    "create_time": "2024-05-06T06:47:43.783563+00:00",
     "draft_mode": false,
     "labels": [
         "events"
