@@ -311,18 +311,18 @@ def list_urls_as_array(action=None, success=None, container=None, results=None, 
 
     phantom.format(container=container, template=template, parameters=parameters, name="list_urls_as_array", drop_none=True)
 
-    refang_urls(container=container)
+    refang_url(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def refang_urls(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("refang_urls() called")
+def refang_url(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("refang_url() called")
 
     list_urls_as_array__as_list = phantom.get_format_data(name="list_urls_as_array__as_list")
 
-    refang_urls__refanged_url = None
+    refang_url__refanged_url = None
 
     ################################################################################
     ## Custom Code Start
@@ -358,7 +358,7 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="refang_urls:refanged_url", value=json.dumps(refang_urls__refanged_url))
+    phantom.save_run_data(key="refang_url:refanged_url", value=json.dumps(refang_url__refanged_url))
 
     fanged_urls(container=container)
 
@@ -373,7 +373,7 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
     # parameter list for template variable replacement
     parameters = [
-        "refang_urls:custom_function:refanged_url"
+        "refang_url:custom_function:refanged_url"
     ]
 
     ################################################################################
@@ -408,8 +408,8 @@ def update_notable_results_found(action=None, success=None, container=None, resu
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "comment": format_report_url,
+                "event_ids": container_artifact_item[0],
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
@@ -450,8 +450,8 @@ def update_notable_no_results(action=None, success=None, container=None, results
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "comment": comment_formatted_string,
+                "event_ids": container_artifact_item[0],
                 "wait_for_confirmation": True,
                 "context": {'artifact_id': container_artifact_item[1]},
             })

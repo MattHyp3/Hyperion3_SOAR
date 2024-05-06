@@ -109,7 +109,7 @@
                 }
             ],
             "globalCustomCode": "from math import log",
-            "hash": "a8238a3c739344494a1e62969d380c8f4791d45f",
+            "hash": "b2380a5707f1a4820e23c80052507cd06f5777a5",
             "nodes": {
                 "0": {
                     "data": {
@@ -125,7 +125,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 540,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -269,12 +269,12 @@
                 "33": {
                     "data": {
                         "advanced": {
-                            "customName": "Refang URLs",
+                            "customName": "Refang URL",
                             "customNameId": 0,
                             "join": []
                         },
                         "functionId": 9,
-                        "functionName": "refang_urls",
+                        "functionName": "refang_url",
                         "id": "33",
                         "inputParameters": [
                             "list_urls_as_array:formatted_data.*"
@@ -304,7 +304,7 @@
                         "functionName": "fanged_urls",
                         "id": "34",
                         "parameters": [
-                            "refang_urls:custom_function:refanged_url"
+                            "refang_url:custom_function:refanged_url"
                         ],
                         "template": "%%\n{0}\n%%",
                         "type": "format"
@@ -370,7 +370,7 @@
                     "type": "action",
                     "warnings": {},
                     "x": 1200,
-                    "y": 119.99999999999997
+                    "y": 119.99999999999994
                 },
                 "37": {
                     "data": {
@@ -689,7 +689,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-03T11:26:26.512038+00:00",
+    "create_time": "2024-05-06T06:35:37.982123+00:00",
     "draft_mode": false,
     "labels": [
         "*"
