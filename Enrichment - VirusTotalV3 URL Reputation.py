@@ -51,12 +51,11 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
 
     list_urls_as_array__as_list = phantom.get_format_data(name="list_urls_as_array__as_list")
 
-    refang_urls__refanged_urls = None
+    refang_urls__refanged_url = None
 
     ################################################################################
     ## Custom Code Start
     ################################################################################
-
     def refang(defanged_urls):
         refanged_urls = []
         
@@ -87,7 +86,7 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="refang_urls:refanged_urls", value=json.dumps(refang_urls__refanged_urls))
+    phantom.save_run_data(key="refang_urls:refanged_url", value=json.dumps(refang_urls__refanged_url))
 
     fanged_urls(container=container)
 

@@ -101,7 +101,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "38d75874e8682814b50edd4556c6f7e62045cc95",
+            "hash": "193b3b3a2a23e532f01f916801ddb66e0e0c6e35",
             "nodes": {
                 "0": {
                     "data": {
@@ -361,14 +361,14 @@
                             "list_urls_as_array:formatted_data.*"
                         ],
                         "outputVariables": [
-                            "refanged_urls"
+                            "refanged_url"
                         ],
                         "type": "code"
                     },
                     "errors": {},
                     "id": "3",
                     "type": "code",
-                    "userCode": "\n    def refang(defanged_urls):\n        refanged_urls = []\n        \n   # interate over the list of urls\n        for url in defanged_urls:\n            if url == None or len(url) == 0:\n                # skip empty urls\n                continue\n                \n            phantom.debug(\"Before refang: {}\".format(url))\n            \n            url = url.replace(\"hxxp\", \"http\")\n            url = url.replace(\"[.]\", \".\")\n            url = url.replace(\"[at]\", \"@\")\n            url = url.replace(\"\\\\\", \"\")\n\n            phantom.debug(\"After refang: {}\".format(url))\n            \n            refanged_urls.append(url)\n            \n        return refanged_urls\n            \n\n    phantom.debug(list_urls_as_array__as_list)\n    refang_url__refanged_url = refang(list_urls_as_array__as_list)\n\n",
+                    "userCode": "    def refang(defanged_urls):\n        refanged_urls = []\n        \n   # interate over the list of urls\n        for url in defanged_urls:\n            if url == None or len(url) == 0:\n                # skip empty urls\n                continue\n                \n            phantom.debug(\"Before refang: {}\".format(url))\n            \n            url = url.replace(\"hxxp\", \"http\")\n            url = url.replace(\"[.]\", \".\")\n            url = url.replace(\"[at]\", \"@\")\n            url = url.replace(\"\\\\\", \"\")\n\n            phantom.debug(\"After refang: {}\".format(url))\n            \n            refanged_urls.append(url)\n            \n        return refanged_urls\n            \n\n    phantom.debug(list_urls_as_array__as_list)\n    refang_url__refanged_url = refang(list_urls_as_array__as_list)\n\n",
                     "warnings": {},
                     "x": 740,
                     "y": 380
@@ -491,9 +491,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 800,
@@ -620,7 +617,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:23:23.771189+00:00",
+    "create_time": "2024-05-06T06:30:54.537818+00:00",
     "draft_mode": false,
     "labels": [
         "events"
