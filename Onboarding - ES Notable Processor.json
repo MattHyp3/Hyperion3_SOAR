@@ -178,7 +178,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "db912fc98c1b1fea05ad30627ce9cb979cce1471",
+            "hash": "25643e357a941b7711b2461ed1ccb35df2e43ee2",
             "nodes": {
                 "0": {
                     "data": {
@@ -1563,8 +1563,7 @@
     "create_time": "2024-05-06T05:02:33.411483+00:00",
     "draft_mode": false,
     "labels": [
-        "risk_notable",
-        "splunk notable events"
+        "events"
     ],
     "tags": []
 }
