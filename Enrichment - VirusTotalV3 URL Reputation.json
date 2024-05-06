@@ -108,7 +108,7 @@
                     "targetPort": "13_in"
                 }
             ],
-            "hash": "93a0a142075bfe6f4d8ae8524892a2b25e7c0001",
+            "hash": "ef2de1911d847203f2a7af8ea966657be3c6fcea",
             "nodes": {
                 "0": {
                     "data": {
@@ -487,7 +487,7 @@
                         "values": {
                             "debug": {
                                 "input_1": [
-                                    "refang_urls:custom_function:refanged_url"
+                                    "refang_urls:custom_function:refanged_urls"
                                 ],
                                 "input_10": null,
                                 "input_2": null,
@@ -546,7 +546,7 @@
                             "list_urls_as_array:formatted_data.*"
                         ],
                         "outputVariables": [
-                            "refanged_url"
+                            "refanged_urls"
                         ],
                         "type": "code"
                     },
@@ -581,9 +581,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 740,
@@ -805,7 +802,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:15:31.686460+00:00",
+    "create_time": "2024-05-06T06:22:26.861261+00:00",
     "draft_mode": false,
     "labels": [
         "events"

@@ -51,7 +51,7 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
 
     list_urls_as_array__as_list = phantom.get_format_data(name="list_urls_as_array__as_list")
 
-    refang_urls__refanged_url = None
+    refang_urls__refanged_urls = None
 
     ################################################################################
     ## Custom Code Start
@@ -87,7 +87,7 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="refang_urls:refanged_url", value=json.dumps(refang_urls__refanged_url))
+    phantom.save_run_data(key="refang_urls:refanged_urls", value=json.dumps(refang_urls__refanged_urls))
 
     debug_2(container=container)
 
@@ -484,12 +484,12 @@ def add_note_1(action=None, success=None, container=None, results=None, handle=N
 def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("debug_2() called")
 
-    refang_urls__refanged_url = json.loads(_ if (_ := phantom.get_run_data(key="refang_urls:refanged_url")) != "" else "null")  # pylint: disable=used-before-assignment
+    refang_urls__refanged_urls = json.loads(_ if (_ := phantom.get_run_data(key="refang_urls:refanged_urls")) != "" else "null")  # pylint: disable=used-before-assignment
 
     parameters = []
 
     parameters.append({
-        "input_1": refang_urls__refanged_url,
+        "input_1": refang_urls__refanged_urls,
         "input_2": None,
         "input_3": None,
         "input_4": None,
