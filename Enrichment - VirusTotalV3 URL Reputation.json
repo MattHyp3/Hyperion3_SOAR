@@ -108,7 +108,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "90fb2691adf03cc48d00dfa07a07b71e0be82e8d",
+            "hash": "e6ac870be334aeb6b6834b7c91b21ab78f8adfa8",
             "nodes": {
                 "0": {
                     "data": {
@@ -124,7 +124,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 760,
-                    "y": 120
+                    "y": 119.99999999999994
                 },
                 "1": {
                     "data": {
@@ -614,8 +614,8 @@
             },
             "notes": "",
             "origin": {
-                "playbook_id": 397,
-                "playbook_name": "Enrichment - VirusTotalV3 URL Reputation",
+                "playbook_id": 398,
+                "playbook_name": "Enrichment - VirusTotalV3 URL Detonate",
                 "playbook_repo_id": 15,
                 "playbook_repo_name": "Hyperion3"
             }
@@ -627,7 +627,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:35:08.587428+00:00",
+    "create_time": "2024-05-06T06:36:47.278152+00:00",
     "draft_mode": false,
     "labels": [
         "events"

@@ -212,8 +212,8 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "comment": comment_formatted_string,
+                "event_ids": container_artifact_item[0],
                 "wait_for_confirmation": True,
                 "context": {'artifact_id': container_artifact_item[1]},
             })
@@ -438,8 +438,8 @@ def update_event_2(action=None, success=None, container=None, results=None, hand
     for container_artifact_item in container_artifact_data:
         if container_artifact_item[0] is not None:
             parameters.append({
-                "event_ids": container_artifact_item[0],
                 "comment": format_report_url,
+                "event_ids": container_artifact_item[0],
                 "context": {'artifact_id': container_artifact_item[1]},
             })
 
