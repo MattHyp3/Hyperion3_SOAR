@@ -117,14 +117,14 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
     phantom.format(container=container, template=template, parameters=parameters, name="fanged_urls", drop_none=True)
 
-    url_reputation_1(container=container)
+    url_reputation(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def url_reputation_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("url_reputation_1() called")
+def url_reputation(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("url_reputation() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -132,7 +132,7 @@ def url_reputation_1(action=None, success=None, container=None, results=None, ha
 
     parameters = []
 
-    # build parameters list for 'url_reputation_1' call
+    # build parameters list for 'url_reputation' call
     for fanged_urls__item in fanged_urls__as_list:
         if fanged_urls__item is not None:
             parameters.append({
@@ -149,7 +149,7 @@ def url_reputation_1(action=None, success=None, container=None, results=None, ha
     ## Custom Code End
     ################################################################################
 
-    phantom.act("url reputation", parameters=parameters, name="url_reputation_1", assets=["vtv3"], callback=url_result_filter)
+    phantom.act("url reputation", parameters=parameters, name="url_reputation", assets=["vtv3"], callback=url_result_filter)
 
     return
 
@@ -255,7 +255,7 @@ def normalize_score_url(action=None, success=None, container=None, results=None,
     ################################################################################
     ## Custom Code Start
     ################################################################################
-    
+    from math import log
     # Reference for scores: https://schema.ocsf.io/objects/reputation
     score_table = {
         "0":"Unknown",

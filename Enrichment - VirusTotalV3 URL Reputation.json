@@ -35,13 +35,6 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 1
@@ -59,18 +52,6 @@
                     "sourcePort": "7_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_6_to_port_8",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
                 },
                 {
                     "id": "port_8_to_port_9",
@@ -106,9 +87,28 @@
                     "sourcePort": "12_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_6_to_port_8",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
                 }
             ],
-            "hash": "841e34ce0e1dcec9692475108103477f365d0233",
+            "hash": "75b81ed009c7483a0ae3b85a28b2de02f37f129f",
             "nodes": {
                 "0": {
                     "data": {
@@ -409,6 +409,8 @@
                         "action": "url reputation",
                         "actionType": "investigate",
                         "advanced": {
+                            "customName": "url reputation",
+                            "customNameId": 0,
                             "join": []
                         },
                         "connector": "VirusTotal v3",
@@ -418,7 +420,7 @@
                         "connectorId": "3fe4875d-a4a7-47d3-9ef1-f9e63a6653a4",
                         "connectorVersion": "v1",
                         "functionId": 1,
-                        "functionName": "url_reputation_1",
+                        "functionName": "url_reputation",
                         "id": "5",
                         "loop": {
                             "enabled": false,
@@ -454,6 +456,7 @@
                             "customNameId": 0,
                             "description": "Filters successful url reputation results.",
                             "join": [],
+                            "notRequiredJoins": [],
                             "note": "Filters successful url reputation results."
                         },
                         "conditions": [
@@ -473,6 +476,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "url_reputation:action_result.status",
                                         "value": "failed"
@@ -491,11 +495,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "filter",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 800,
                     "y": 744.5
                 },
@@ -576,7 +576,7 @@
                     "errors": {},
                     "id": "8",
                     "type": "code",
-                    "userCode": "    \n    # Reference for scores: https://schema.ocsf.io/objects/reputation\n    score_table = {\n        \"0\":\"Unknown\",\n        \"1\":\"Very_Safe\",\n        \"2\":\"Safe\",\n        \"3\":\"Probably_Safe\",\n        \"4\":\"Leans_Safe\",\n        \"5\":\"May_not_be_Safe\",\n        \"6\":\"Exercise_Caution\",\n        \"7\":\"Suspicious_or_Risky\",\n        \"8\":\"Possibly_Malicious\",\n        \"9\":\"Probably_Malicious\",\n        \"10\":\"Malicious\"\n    }\n    \n    # Assign Variables\n    url_categories_list = filtered_result_0_data___attributes_categories\n    url_summary_list = filtered_result_0_summary\n    normalize_score_url__url_score_object = []\n    normalize_score_url__score = []\n    normalize_score_url__categories = []\n    \n    # VirusTotal v3 URL Data\n    # Adjust logic as desired\n    for category, summary_data in zip(url_categories_list, url_summary_list):\n\n        # Set confidence based on percentage of vendors undetected\n        # Reduce the confidence by percentage of vendors undetected.\n        vendors = summary_data['harmless'] + summary_data['undetected'] + summary_data['malicious'] + summary_data['suspicious']\n        confidence = 100 - int((summary_data['undetected']/vendors) * 100)\n        \n        # Normalize reputation on a 10 point scale based on number of malicious and suspicious divided by harmless vendors\n        # This can be adjusted to include whatever logic is desired.\n        suspect = summary_data['malicious'] + summary_data['suspicious']\n        # If there are only harmless verdicts and no suspicious entries, set score_id to 1.\n        if summary_data['harmless'] and not suspect:\n            score_id = 1\n        else:\n            if suspect and vendors:\n                # customize score calculation as desired\n                log_result = log((suspect/vendors) * 100, 100) # log imported from math in global code block\n                score_id = int(log_result * 10) + 3\n            \n                if score_id > 10:\n                    score_id = 10\n                    \n            elif suspect == 0:\n                score_id = 0\n        \n        categories = [cat.lower() for cat in category.values()]\n        categories = list(set(categories))\n        \n        score = score_table[str(score_id)]\n        \n        # Attach final object\n        normalize_score_url__url_score_object.append({'score': score, 'score_id': score_id, 'confidence': confidence, 'categories': categories})\n        normalize_score_url__score.append(score)\n        normalize_score_url__categories.append(categories)\n\n",
+                    "userCode": "    from math import log\n    # Reference for scores: https://schema.ocsf.io/objects/reputation\n    score_table = {\n        \"0\":\"Unknown\",\n        \"1\":\"Very_Safe\",\n        \"2\":\"Safe\",\n        \"3\":\"Probably_Safe\",\n        \"4\":\"Leans_Safe\",\n        \"5\":\"May_not_be_Safe\",\n        \"6\":\"Exercise_Caution\",\n        \"7\":\"Suspicious_or_Risky\",\n        \"8\":\"Possibly_Malicious\",\n        \"9\":\"Probably_Malicious\",\n        \"10\":\"Malicious\"\n    }\n    \n    # Assign Variables\n    url_categories_list = filtered_result_0_data___attributes_categories\n    url_summary_list = filtered_result_0_summary\n    normalize_score_url__url_score_object = []\n    normalize_score_url__score = []\n    normalize_score_url__categories = []\n    \n    # VirusTotal v3 URL Data\n    # Adjust logic as desired\n    for category, summary_data in zip(url_categories_list, url_summary_list):\n\n        # Set confidence based on percentage of vendors undetected\n        # Reduce the confidence by percentage of vendors undetected.\n        vendors = summary_data['harmless'] + summary_data['undetected'] + summary_data['malicious'] + summary_data['suspicious']\n        confidence = 100 - int((summary_data['undetected']/vendors) * 100)\n        \n        # Normalize reputation on a 10 point scale based on number of malicious and suspicious divided by harmless vendors\n        # This can be adjusted to include whatever logic is desired.\n        suspect = summary_data['malicious'] + summary_data['suspicious']\n        # If there are only harmless verdicts and no suspicious entries, set score_id to 1.\n        if summary_data['harmless'] and not suspect:\n            score_id = 1\n        else:\n            if suspect and vendors:\n                # customize score calculation as desired\n                log_result = log((suspect/vendors) * 100, 100) # log imported from math in global code block\n                score_id = int(log_result * 10) + 3\n            \n                if score_id > 10:\n                    score_id = 10\n                    \n            elif suspect == 0:\n                score_id = 0\n        \n        categories = [cat.lower() for cat in category.values()]\n        categories = list(set(categories))\n        \n        score = score_table[str(score_id)]\n        \n        # Attach final object\n        normalize_score_url__url_score_object.append({'score': score, 'score_id': score_id, 'confidence': confidence, 'categories': categories})\n        normalize_score_url__score.append(score)\n        normalize_score_url__categories.append(categories)\n\n",
                     "warnings": {},
                     "x": 1140,
                     "y": 260
@@ -620,8 +620,8 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T05:57:43.232730+00:00",
-    "draft_mode": true,
+    "create_time": "2024-05-06T06:12:13.649258+00:00",
+    "draft_mode": false,
     "labels": [
         "events"
     ],
