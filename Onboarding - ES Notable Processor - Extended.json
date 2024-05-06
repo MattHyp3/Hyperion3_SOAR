@@ -1547,8 +1547,8 @@
             },
             "notes": "",
             "origin": {
-                "playbook_id": 328,
-                "playbook_name": "Onboarding - Notable Preprocess",
+                "playbook_id": 376,
+                "playbook_name": "Onboarding - ES Notable Processor",
                 "playbook_repo_id": 15,
                 "playbook_repo_name": "Hyperion3"
             }
