@@ -149,7 +149,7 @@ def url_reputation(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("url reputation", parameters=parameters, name="url_reputation", assets=["vtv3"], callback=url_result_filter)
+    phantom.act("url reputation", parameters=parameters, name="url_reputation", assets=["vtv3"])
 
     return
 
