@@ -117,6 +117,7 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
     phantom.format(container=container, template=template, parameters=parameters, name="fanged_urls", drop_none=True)
 
     url_reputation(container=container)
+    debug_2(container=container)
 
     return
 
@@ -475,6 +476,42 @@ def add_note_1(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=format_report_url, note_format="markdown", note_type="general", title="Virus Total Scan results")
+
+    return
+
+
+@phantom.playbook_block()
+def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("debug_2() called")
+
+    fanged_urls__as_list = phantom.get_format_data(name="fanged_urls__as_list")
+
+    parameters = []
+
+    parameters.append({
+        "input_1": fanged_urls__as_list,
+        "input_2": None,
+        "input_3": None,
+        "input_4": None,
+        "input_5": None,
+        "input_6": None,
+        "input_7": None,
+        "input_8": None,
+        "input_9": None,
+        "input_10": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
