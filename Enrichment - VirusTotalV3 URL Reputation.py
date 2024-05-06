@@ -89,7 +89,7 @@ def refang_urls(action=None, success=None, container=None, results=None, handle=
 
     phantom.save_run_data(key="refang_urls:refanged_urls", value=json.dumps(refang_urls__refanged_urls))
 
-    debug_2(container=container)
+    fanged_urls(container=container)
 
     return
 
@@ -102,7 +102,7 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
     # parameter list for template variable replacement
     parameters = [
-        "refang_urls:custom_function:refanged_url"
+        "refang_urls:custom_function:refanged_urls"
     ]
 
     ################################################################################
@@ -476,42 +476,6 @@ def add_note_1(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=format_report_url, note_format="markdown", note_type="general", title="Virus Total Scan results")
-
-    return
-
-
-@phantom.playbook_block()
-def debug_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("debug_2() called")
-
-    refang_urls__refanged_urls = json.loads(_ if (_ := phantom.get_run_data(key="refang_urls:refanged_urls")) != "" else "null")  # pylint: disable=used-before-assignment
-
-    parameters = []
-
-    parameters.append({
-        "input_1": refang_urls__refanged_urls,
-        "input_2": None,
-        "input_3": None,
-        "input_4": None,
-        "input_5": None,
-        "input_6": None,
-        "input_7": None,
-        "input_8": None,
-        "input_9": None,
-        "input_10": None,
-    })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.custom_function(custom_function="community/debug", parameters=parameters, name="debug_2")
 
     return
 
