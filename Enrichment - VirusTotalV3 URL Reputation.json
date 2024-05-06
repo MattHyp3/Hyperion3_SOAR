@@ -108,7 +108,6 @@
                     "targetPort": "8_in"
                 }
             ],
-            "hash": "75b81ed009c7483a0ae3b85a28b2de02f37f129f",
             "nodes": {
                 "0": {
                     "data": {
