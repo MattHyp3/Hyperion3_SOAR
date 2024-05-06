@@ -4,7 +4,7 @@
     "category": "Risk Notable",
     "coa": {
         "data": {
-            "description": "This playbook prepares a Risk Notable for investigation. First, it ensures that a \"Risk Notable\" links back to the original notable event with a card pinned to the HUD. It then posts a link to this container in the comment field of Enterprise Security. Finally, it updates the container name, description, and severity to reflect the data in the Notable artifact.\t",
+            "description": "",
             "edges": [
                 {
                     "id": "port_5_to_port_7",
@@ -178,7 +178,7 @@
                     "targetPort": "5_in"
                 }
             ],
-            "hash": "25643e357a941b7711b2461ed1ccb35df2e43ee2",
+            "hash": "db912fc98c1b1fea05ad30627ce9cb979cce1471",
             "nodes": {
                 "0": {
                     "data": {
@@ -194,7 +194,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 700,
-                    "y": -3.197442310920451e-14
+                    "y": -9.592326932761353e-14
                 },
                 "1": {
                     "data": {
@@ -1545,7 +1545,7 @@
                     "y": 952
                 }
             },
-            "notes": "For detailed implementation see https://docs.splunk.com/Documentation/ESSOC/latest/user/Useplaybookpack",
+            "notes": "",
             "origin": {
                 "playbook_id": 328,
                 "playbook_name": "Onboarding - Notable Preprocess",
@@ -1560,7 +1560,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-04-01T02:53:09.968117+00:00",
+    "create_time": "2024-05-06T05:02:33.411483+00:00",
     "draft_mode": false,
     "labels": [
         "risk_notable",

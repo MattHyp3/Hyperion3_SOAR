@@ -1,5 +1,5 @@
 """
-This playbook prepares a Risk Notable for investigation. First, it ensures that a &quot;Risk Notable&quot; links back to the original notable event with a card pinned to the HUD. It then posts a link to this container in the comment field of Enterprise Security. Finally, it updates the container name, description, and severity to reflect the data in the Notable artifact.\t
+
 """
 
 
@@ -308,16 +308,16 @@ def artifact_update_severity(action=None, success=None, container=None, results=
     # build parameters list for 'artifact_update_severity' call
     for container_artifact_item in container_artifact_data:
         parameters.append({
-            "artifact_id": container_artifact_item[0],
             "name": None,
+            "tags": None,
             "label": None,
             "severity": None,
             "cef_field": None,
             "cef_value": None,
-            "cef_data_type": None,
-            "tags": None,
-            "overwrite_tags": None,
             "input_json": None,
+            "artifact_id": container_artifact_item[0],
+            "cef_data_type": None,
+            "overwrite_tags": None,
         })
 
     ################################################################################
