@@ -101,7 +101,7 @@
                     "targetPort": "4_in"
                 }
             ],
-            "hash": "193b3b3a2a23e532f01f916801ddb66e0e0c6e35",
+            "hash": "ba016f163482059bb9bb18dd23e3694e07bd4469",
             "nodes": {
                 "0": {
                     "data": {
@@ -348,14 +348,15 @@
                     "y": 260
                 },
                 "3": {
+                    "customCode": null,
                     "data": {
                         "advanced": {
-                            "customName": "Refang URLs",
+                            "customName": "Refang URL",
                             "customNameId": 0,
                             "join": []
                         },
                         "functionId": 1,
-                        "functionName": "refang_urls",
+                        "functionName": "refang_url",
                         "id": "3",
                         "inputParameters": [
                             "list_urls_as_array:formatted_data.*"
@@ -385,7 +386,7 @@
                         "functionName": "fanged_urls",
                         "id": "4",
                         "parameters": [
-                            "refang_urls:custom_function:refanged_urls"
+                            "refang_url:custom_function:refanged_urls"
                         ],
                         "template": "%%\n{0}\n%%",
                         "type": "format"
@@ -491,6 +492,9 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 800,
@@ -617,7 +621,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:30:54.537818+00:00",
+    "create_time": "2024-05-06T06:33:36.168306+00:00",
     "draft_mode": false,
     "labels": [
         "events"
