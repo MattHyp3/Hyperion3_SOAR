@@ -108,7 +108,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "e6ac870be334aeb6b6834b7c91b21ab78f8adfa8",
+            "hash": "6e72e301c0fe1d392650afa97d0b002a0aed4373",
             "nodes": {
                 "0": {
                     "data": {
@@ -124,7 +124,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 760,
-                    "y": 119.99999999999994
+                    "y": 119.99999999999989
                 },
                 "1": {
                     "data": {
@@ -407,7 +407,7 @@
                 },
                 "5": {
                     "data": {
-                        "action": "url reputation",
+                        "action": "detonate url",
                         "actionType": "investigate",
                         "advanced": {
                             "customName": "url reputation",
@@ -627,7 +627,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-05-06T06:37:07.358522+00:00",
+    "create_time": "2024-05-06T06:38:04.031141+00:00",
     "draft_mode": false,
     "labels": [
         "events"
