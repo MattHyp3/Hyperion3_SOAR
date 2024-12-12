@@ -116,39 +116,7 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
     phantom.format(container=container, template=template, parameters=parameters, name="fanged_urls", drop_none=True)
 
-    url_reputation(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def url_reputation(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("url_reputation() called")
-
-    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
-
-    fanged_urls__as_list = phantom.get_format_data(name="fanged_urls__as_list")
-
-    parameters = []
-
-    # build parameters list for 'url_reputation' call
-    for fanged_urls__item in fanged_urls__as_list:
-        if fanged_urls__item is not None:
-            parameters.append({
-                "url": fanged_urls__item,
-            })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.act("detonate url", parameters=parameters, name="url_reputation", assets=["vtv3"], callback=url_result_filter)
+    detonate_url_1(container=container)
 
     return
 
@@ -172,7 +140,7 @@ def url_result_filter(action=None, success=None, container=None, results=None, h
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
-        normalize_score_url(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
+        format_report_url(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
 
     # collect filtered artifact ids and results for 'if' condition 2
     matched_artifacts_2, matched_results_2 = phantom.condition(
@@ -234,100 +202,6 @@ def update_event_1(action=None, success=None, container=None, results=None, hand
 
 
 @phantom.playbook_block()
-def normalize_score_url(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("normalize_score_url() called")
-
-    ################################################################################
-    # Contains custom code for normalizing score. Adjust the logic as desired in the 
-    # documented sections.
-    ################################################################################
-
-    filtered_result_0_data_url_result_filter = phantom.collect2(container=container, datapath=["filtered-data:url_result_filter:condition_1:url_reputation:action_result.data.*.attributes.categories","filtered-data:url_result_filter:condition_1:url_reputation:action_result.summary"])
-
-    filtered_result_0_data___attributes_categories = [item[0] for item in filtered_result_0_data_url_result_filter]
-    filtered_result_0_summary = [item[1] for item in filtered_result_0_data_url_result_filter]
-
-    normalize_score_url__url_score_object = None
-    normalize_score_url__score = None
-    normalize_score_url__categories = None
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-    from math import log
-    # Reference for scores: https://schema.ocsf.io/objects/reputation
-    score_table = {
-        "0":"Unknown",
-        "1":"Very_Safe",
-        "2":"Safe",
-        "3":"Probably_Safe",
-        "4":"Leans_Safe",
-        "5":"May_not_be_Safe",
-        "6":"Exercise_Caution",
-        "7":"Suspicious_or_Risky",
-        "8":"Possibly_Malicious",
-        "9":"Probably_Malicious",
-        "10":"Malicious"
-    }
-    
-    # Assign Variables
-    url_categories_list = filtered_result_0_data___attributes_categories
-    url_summary_list = filtered_result_0_summary
-    normalize_score_url__url_score_object = []
-    normalize_score_url__score = []
-    normalize_score_url__categories = []
-    
-    # VirusTotal v3 URL Data
-    # Adjust logic as desired
-    for category, summary_data in zip(url_categories_list, url_summary_list):
-
-        # Set confidence based on percentage of vendors undetected
-        # Reduce the confidence by percentage of vendors undetected.
-        vendors = summary_data['harmless'] + summary_data['undetected'] + summary_data['malicious'] + summary_data['suspicious']
-        confidence = 100 - int((summary_data['undetected']/vendors) * 100)
-        
-        # Normalize reputation on a 10 point scale based on number of malicious and suspicious divided by harmless vendors
-        # This can be adjusted to include whatever logic is desired.
-        suspect = summary_data['malicious'] + summary_data['suspicious']
-        # If there are only harmless verdicts and no suspicious entries, set score_id to 1.
-        if summary_data['harmless'] and not suspect:
-            score_id = 1
-        else:
-            if suspect and vendors:
-                # customize score calculation as desired
-                log_result = log((suspect/vendors) * 100, 100) # log imported from math in global code block
-                score_id = int(log_result * 10) + 3
-            
-                if score_id > 10:
-                    score_id = 10
-                    
-            elif suspect == 0:
-                score_id = 0
-        
-        categories = [cat.lower() for cat in category.values()]
-        categories = list(set(categories))
-        
-        score = score_table[str(score_id)]
-        
-        # Attach final object
-        normalize_score_url__url_score_object.append({'score': score, 'score_id': score_id, 'confidence': confidence, 'categories': categories})
-        normalize_score_url__score.append(score)
-        normalize_score_url__categories.append(categories)
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.save_run_data(key="normalize_score_url:url_score_object", value=json.dumps(normalize_score_url__url_score_object))
-    phantom.save_run_data(key="normalize_score_url:score", value=json.dumps(normalize_score_url__score))
-    phantom.save_run_data(key="normalize_score_url:categories", value=json.dumps(normalize_score_url__categories))
-
-    format_report_url(container=container)
-
-    return
-
-
-@phantom.playbook_block()
 def format_report_url(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_report_url() called")
 
@@ -356,67 +230,6 @@ def format_report_url(action=None, success=None, container=None, results=None, h
     ################################################################################
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_report_url", drop_none=True)
-
-    build_url_output(container=container)
-
-    return
-
-
-@phantom.playbook_block()
-def build_url_output(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("build_url_output() called")
-
-    ################################################################################
-    # Generate an observable dictionary to output into the observables data path.
-    ################################################################################
-
-    filtered_result_0_data_url_result_filter = phantom.collect2(container=container, datapath=["filtered-data:url_result_filter:condition_1:url_reputation:action_result.parameter.url","filtered-data:url_result_filter:condition_1:url_reputation:action_result.data.*.id"])
-    normalize_score_url__url_score_object = json.loads(_ if (_ := phantom.get_run_data(key="normalize_score_url:url_score_object")) != "" else "null")  # pylint: disable=used-before-assignment
-
-    filtered_result_0_parameter_url = [item[0] for item in filtered_result_0_data_url_result_filter]
-    filtered_result_0_data___id = [item[1] for item in filtered_result_0_data_url_result_filter]
-
-    build_url_output__observable_array = None
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-    from urllib.parse import urlparse
-    build_url_output__observable_array = []
-
-    # Build URL
-    for url, external_id, url_object in zip(filtered_result_0_parameter_url, filtered_result_0_data___id, normalize_score_url__url_score_object):
-        parsed_url = urlparse(url)
-        observable_object = {
-            "value": url,
-            "type": "url",
-            "reputation": {
-                "score_id": url_object['score_id'],
-                "score": url_object['score'],
-                "confidence": url_object['confidence']
-            },
-            "attributes": {
-                "hostname": parsed_url.hostname,
-                "scheme": parsed_url.scheme
-            },
-            "categories": url_object['categories'],
-            "source": "VirusTotal v3",
-            "source_link": f"https://www.virustotal.com/gui/url/{external_id}"
-        }
-        if parsed_url.path:
-            observable_object['attributes']['path'] = parsed_url.path
-        if parsed_url.query:
-            observable_object['attributes']['query'] = parsed_url.query
-        if parsed_url.port:
-            observable_object['attributes']['port'] = parsed_url.port
-        
-        build_url_output__observable_array.append(observable_object)
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.save_run_data(key="build_url_output:observable_array", value=json.dumps(build_url_output__observable_array))
 
     update_event_2(container=container)
 
@@ -475,6 +288,50 @@ def add_note_1(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=format_report_url, note_format="markdown", note_type="general", title="Virus Total Scan results")
+
+    return
+
+
+@phantom.playbook_block()
+def detonate_url_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("detonate_url_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    fanged_urls__as_list = phantom.get_format_data(name="fanged_urls__as_list")
+
+    parameters = []
+
+    # build parameters list for 'detonate_url_1' call
+    for fanged_urls__item in fanged_urls__as_list:
+        if fanged_urls__item is not None:
+            parameters.append({
+                "os": "Windows10x64_complete",
+                "obj_type": "url",
+                "env_locale": "en-US",
+                "opt_timeout": 60,
+                "obj_ext_browser": "Google Chrome",
+                "opt_network_geo": "fastest",
+                "opt_privacy_type": "bylink",
+                "obj_ext_extension": True,
+                "obj_ext_startfolder": "temp",
+                "opt_network_connect": True,
+                "opt_automated_interactivity": True,
+                "opt_network_residential_proxy_geo": "fastest",
+                "obj_url": fanged_urls__item,
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("detonate url", parameters=parameters, name="detonate_url_1", assets=["anyrun"], callback=url_result_filter)
 
     return
 

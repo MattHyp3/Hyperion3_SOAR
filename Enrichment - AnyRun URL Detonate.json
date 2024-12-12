@@ -21,13 +21,6 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "id": "port_4_to_port_5",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
                     "conditions": [
                         {
                             "index": 1
@@ -47,27 +40,6 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "id": "port_8_to_port_9",
-                    "sourceNode": "8",
-                    "sourcePort": "8_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
-                },
-                {
-                    "id": "port_9_to_port_10",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
-                },
-                {
-                    "id": "port_10_to_port_11",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "11",
-                    "targetPort": "11_in"
-                },
-                {
                     "id": "port_11_to_port_12",
                     "sourceNode": "11",
                     "sourcePort": "11_out",
@@ -82,18 +54,6 @@
                     "targetPort": "1_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_6_to_port_8",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "8",
-                    "targetPort": "8_in"
-                },
-                {
                     "id": "port_3_to_port_4",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
@@ -101,14 +61,40 @@
                     "targetPort": "4_in"
                 },
                 {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
+                    "id": "port_4_to_port_13",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "id": "port_13_to_port_6",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
                     "targetNode": "6",
                     "targetPort": "6_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_6_to_port_9",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_11",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 }
             ],
-            "hash": "6e72e301c0fe1d392650afa97d0b002a0aed4373",
+            "hash": "59b5ef72d2d982553c4358e070a290d19f512208",
             "nodes": {
                 "0": {
                     "data": {
@@ -123,8 +109,8 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 760,
-                    "y": 119.99999999999983
+                    "x": 190,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -139,38 +125,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1160,
-                    "y": 1080
-                },
-                "10": {
-                    "data": {
-                        "advanced": {
-                            "customName": "build url output",
-                            "customNameId": 0,
-                            "description": "Generate an observable dictionary to output into the observables data path.",
-                            "join": [],
-                            "note": "Generate an observable dictionary to output into the observables data path."
-                        },
-                        "functionId": 3,
-                        "functionName": "build_url_output",
-                        "id": "10",
-                        "inputParameters": [
-                            "filtered-data:url_result_filter:condition_1:url_reputation:action_result.parameter.url",
-                            "filtered-data:url_result_filter:condition_1:url_reputation:action_result.data.*.id",
-                            "normalize_score_url:custom_function:url_score_object"
-                        ],
-                        "outputVariables": [
-                            "observable_array"
-                        ],
-                        "type": "code"
-                    },
-                    "errors": {},
-                    "id": "10",
-                    "type": "code",
-                    "userCode": "    from urllib.parse import urlparse\n    build_url_output__observable_array = []\n\n    # Build URL\n    for url, external_id, url_object in zip(filtered_result_0_parameter_url, filtered_result_0_data___id, normalize_score_url__url_score_object):\n        parsed_url = urlparse(url)\n        observable_object = {\n            \"value\": url,\n            \"type\": \"url\",\n            \"reputation\": {\n                \"score_id\": url_object['score_id'],\n                \"score\": url_object['score'],\n                \"confidence\": url_object['confidence']\n            },\n            \"attributes\": {\n                \"hostname\": parsed_url.hostname,\n                \"scheme\": parsed_url.scheme\n            },\n            \"categories\": url_object['categories'],\n            \"source\": \"VirusTotal v3\",\n            \"source_link\": f\"https://www.virustotal.com/gui/url/{external_id}\"\n        }\n        if parsed_url.path:\n            observable_object['attributes']['path'] = parsed_url.path\n        if parsed_url.query:\n            observable_object['attributes']['query'] = parsed_url.query\n        if parsed_url.port:\n            observable_object['attributes']['port'] = parsed_url.port\n        \n        build_url_output__observable_array.append(observable_object)\n\n",
-                    "warnings": {},
-                    "x": 1140,
-                    "y": 600
+                    "x": 190,
+                    "y": 1394
                 },
                 "11": {
                     "data": {
@@ -213,8 +169,8 @@
                     "id": "11",
                     "type": "action",
                     "warnings": {},
-                    "x": 1480,
-                    "y": 260
+                    "x": 340,
+                    "y": 1098
                 },
                 "12": {
                     "data": {
@@ -327,8 +283,123 @@
                     "id": "12",
                     "type": "utility",
                     "warnings": {},
-                    "x": 1480,
-                    "y": 384.5
+                    "x": 340,
+                    "y": 1246
+                },
+                "13": {
+                    "data": {
+                        "action": "detonate url",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "ANY.RUN",
+                        "connectorConfigs": [
+                            "anyrun"
+                        ],
+                        "connectorId": "22a6a703-24dd-41eb-9736-1d6067e56abf",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "detonate_url_1",
+                        "id": "13",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "env_locale": "en-US",
+                            "obj_ext_browser": "Google Chrome",
+                            "obj_ext_extension": true,
+                            "obj_ext_startfolder": "temp",
+                            "obj_type": "url",
+                            "obj_url": "fanged_urls:formatted_data.*",
+                            "opt_automated_interactivity": true,
+                            "opt_network_connect": true,
+                            "opt_network_geo": "fastest",
+                            "opt_network_residential_proxy_geo": "fastest",
+                            "opt_privacy_type": "bylink",
+                            "opt_timeout": "60",
+                            "os": "Windows10x64_complete"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "default": "Windows10x64_complete",
+                                "field": "os"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "obj_url"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "url",
+                                "field": "obj_type"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "en-US",
+                                "field": "env_locale"
+                            },
+                            {
+                                "data_type": "numeric",
+                                "default": "60",
+                                "field": "opt_timeout"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "Google Chrome",
+                                "field": "obj_ext_browser"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "fastest",
+                                "field": "opt_network_geo"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "bylink",
+                                "field": "opt_privacy_type"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "obj_ext_extension"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "temp",
+                                "field": "obj_ext_startfolder"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "opt_network_connect"
+                            },
+                            {
+                                "data_type": "boolean",
+                                "default": true,
+                                "field": "opt_automated_interactivity"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "fastest",
+                                "field": "opt_network_residential_proxy_geo"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 170,
+                    "y": 592
                 },
                 "2": {
                     "data": {
@@ -351,8 +422,8 @@
                     "id": "2",
                     "type": "format",
                     "warnings": {},
-                    "x": 740,
-                    "y": 260
+                    "x": 170,
+                    "y": 148
                 },
                 "3": {
                     "customCode": null,
@@ -378,8 +449,8 @@
                     "type": "code",
                     "userCode": "    def refang(defanged_urls):\n        refanged_urls = []\n        \n   # interate over the list of urls\n        for url in defanged_urls:\n            if url == None or len(url) == 0:\n                # skip empty urls\n                continue\n                \n            phantom.debug(\"Before refang: {}\".format(url))\n            \n            url = url.replace(\"hxxp\", \"http\")\n            url = url.replace(\"[.]\", \".\")\n            url = url.replace(\"[at]\", \"@\")\n            url = url.replace(\"\\\\\", \"\")\n\n            phantom.debug(\"After refang: {}\".format(url))\n            \n            refanged_urls.append(url)\n            \n        return refanged_urls\n            \n\n    phantom.debug(list_urls_as_array__as_list)\n    refang_url__refanged_url = refang(list_urls_as_array__as_list)\n\n",
                     "warnings": {},
-                    "x": 740,
-                    "y": 380
+                    "x": 170,
+                    "y": 296
                 },
                 "4": {
                     "data": {
@@ -402,53 +473,8 @@
                     "id": "4",
                     "type": "format",
                     "warnings": {},
-                    "x": 740,
-                    "y": 500
-                },
-                "5": {
-                    "data": {
-                        "action": "detonate url",
-                        "actionType": "investigate",
-                        "advanced": {
-                            "customName": "url reputation",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "connector": "VirusTotal v3",
-                        "connectorConfigs": [
-                            "vtv3"
-                        ],
-                        "connectorId": "3fe4875d-a4a7-47d3-9ef1-f9e63a6653a4",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "url_reputation",
-                        "id": "5",
-                        "loop": {
-                            "enabled": false,
-                            "exitAfterUnit": "m",
-                            "exitAfterValue": 10,
-                            "exitConditionEnabled": false,
-                            "exitLoopAfter": 2,
-                            "pauseUnit": "m",
-                            "pauseValue": 2
-                        },
-                        "parameters": {
-                            "url": "fanged_urls:formatted_data.*"
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "url"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "action",
-                    "warnings": {},
-                    "x": 740,
-                    "y": 620
+                    "x": 170,
+                    "y": 444
                 },
                 "6": {
                     "data": {
@@ -496,9 +522,13 @@
                     "errors": {},
                     "id": "6",
                     "type": "filter",
-                    "warnings": {},
-                    "x": 800,
-                    "y": 744.5
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
+                    "x": 230,
+                    "y": 740
                 },
                 "7": {
                     "data": {
@@ -548,39 +578,8 @@
                     "id": "7",
                     "type": "action",
                     "warnings": {},
-                    "x": 1140,
-                    "y": 940
-                },
-                "8": {
-                    "data": {
-                        "advanced": {
-                            "customName": "normalize score url",
-                            "customNameId": 0,
-                            "description": "Contains custom code for normalizing score. Adjust the logic as desired in the documented sections.",
-                            "join": [],
-                            "note": "Contains custom code for normalizing score. Adjust the logic as desired in the documented sections."
-                        },
-                        "functionId": 2,
-                        "functionName": "normalize_score_url",
-                        "id": "8",
-                        "inputParameters": [
-                            "filtered-data:url_result_filter:condition_1:url_reputation:action_result.data.*.attributes.categories",
-                            "filtered-data:url_result_filter:condition_1:url_reputation:action_result.summary"
-                        ],
-                        "outputVariables": [
-                            "url_score_object",
-                            "score",
-                            "categories"
-                        ],
-                        "type": "code"
-                    },
-                    "errors": {},
-                    "id": "8",
-                    "type": "code",
-                    "userCode": "    from math import log\n    # Reference for scores: https://schema.ocsf.io/objects/reputation\n    score_table = {\n        \"0\":\"Unknown\",\n        \"1\":\"Very_Safe\",\n        \"2\":\"Safe\",\n        \"3\":\"Probably_Safe\",\n        \"4\":\"Leans_Safe\",\n        \"5\":\"May_not_be_Safe\",\n        \"6\":\"Exercise_Caution\",\n        \"7\":\"Suspicious_or_Risky\",\n        \"8\":\"Possibly_Malicious\",\n        \"9\":\"Probably_Malicious\",\n        \"10\":\"Malicious\"\n    }\n    \n    # Assign Variables\n    url_categories_list = filtered_result_0_data___attributes_categories\n    url_summary_list = filtered_result_0_summary\n    normalize_score_url__url_score_object = []\n    normalize_score_url__score = []\n    normalize_score_url__categories = []\n    \n    # VirusTotal v3 URL Data\n    # Adjust logic as desired\n    for category, summary_data in zip(url_categories_list, url_summary_list):\n\n        # Set confidence based on percentage of vendors undetected\n        # Reduce the confidence by percentage of vendors undetected.\n        vendors = summary_data['harmless'] + summary_data['undetected'] + summary_data['malicious'] + summary_data['suspicious']\n        confidence = 100 - int((summary_data['undetected']/vendors) * 100)\n        \n        # Normalize reputation on a 10 point scale based on number of malicious and suspicious divided by harmless vendors\n        # This can be adjusted to include whatever logic is desired.\n        suspect = summary_data['malicious'] + summary_data['suspicious']\n        # If there are only harmless verdicts and no suspicious entries, set score_id to 1.\n        if summary_data['harmless'] and not suspect:\n            score_id = 1\n        else:\n            if suspect and vendors:\n                # customize score calculation as desired\n                log_result = log((suspect/vendors) * 100, 100) # log imported from math in global code block\n                score_id = int(log_result * 10) + 3\n            \n                if score_id > 10:\n                    score_id = 10\n                    \n            elif suspect == 0:\n                score_id = 0\n        \n        categories = [cat.lower() for cat in category.values()]\n        categories = list(set(categories))\n        \n        score = score_table[str(score_id)]\n        \n        # Attach final object\n        normalize_score_url__url_score_object.append({'score': score, 'score_id': score_id, 'confidence': confidence, 'categories': categories})\n        normalize_score_url__score.append(score)\n        normalize_score_url__categories.append(categories)\n\n",
-                    "warnings": {},
-                    "x": 1140,
-                    "y": 260
+                    "x": 0,
+                    "y": 1246
                 },
                 "9": {
                     "data": {
@@ -607,9 +606,13 @@
                     "errors": {},
                     "id": "9",
                     "type": "format",
-                    "warnings": {},
-                    "x": 1140,
-                    "y": 420
+                    "warnings": {
+                        "config": [
+                            "Reconfigure invalid datapath."
+                        ]
+                    },
+                    "x": 340,
+                    "y": 920
                 }
             },
             "notes": "",
@@ -627,10 +630,10 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-12-12T03:47:11.138431+00:00",
+    "create_time": "2024-12-12T03:50:14.066593+00:00",
     "draft_mode": false,
     "labels": [
-        "events"
+        "*"
     ],
     "tags": []
 }
