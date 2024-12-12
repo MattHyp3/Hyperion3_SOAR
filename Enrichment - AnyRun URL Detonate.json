@@ -21,25 +21,6 @@
                     "targetPort": "3_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_6_to_port_7",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
-                },
-                {
-                    "id": "port_7_to_port_1",
-                    "sourceNode": "7",
-                    "sourcePort": "7_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
-                },
-                {
                     "id": "port_11_to_port_12",
                     "sourceNode": "11",
                     "sourcePort": "11_out",
@@ -68,33 +49,21 @@
                     "targetPort": "13_in"
                 },
                 {
-                    "id": "port_13_to_port_6",
-                    "sourceNode": "13",
-                    "sourcePort": "13_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_6_to_port_9",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
-                },
-                {
                     "id": "port_9_to_port_11",
                     "sourceNode": "9",
                     "sourcePort": "9_out",
                     "targetNode": "11",
                     "targetPort": "11_in"
+                },
+                {
+                    "id": "port_13_to_port_9",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
                 }
             ],
-            "hash": "59b5ef72d2d982553c4358e070a290d19f512208",
+            "hash": "0e79ac8d453704419f459a02e295b13f8c75c94e",
             "nodes": {
                 "0": {
                     "data": {
@@ -109,7 +78,7 @@
                     "id": "0",
                     "type": "start",
                     "warnings": {},
-                    "x": 190,
+                    "x": 20,
                     "y": 0
                 },
                 "1": {
@@ -125,8 +94,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 190,
-                    "y": 1394
+                    "x": 20,
+                    "y": 1214
                 },
                 "11": {
                     "data": {
@@ -169,8 +138,8 @@
                     "id": "11",
                     "type": "action",
                     "warnings": {},
-                    "x": 340,
-                    "y": 1098
+                    "x": 0,
+                    "y": 918
                 },
                 "12": {
                     "data": {
@@ -283,8 +252,8 @@
                     "id": "12",
                     "type": "utility",
                     "warnings": {},
-                    "x": 340,
-                    "y": 1246
+                    "x": 0,
+                    "y": 1066
                 },
                 "13": {
                     "data": {
@@ -398,7 +367,7 @@
                     "id": "13",
                     "type": "action",
                     "warnings": {},
-                    "x": 170,
+                    "x": 0,
                     "y": 592
                 },
                 "2": {
@@ -422,7 +391,7 @@
                     "id": "2",
                     "type": "format",
                     "warnings": {},
-                    "x": 170,
+                    "x": 0,
                     "y": 148
                 },
                 "3": {
@@ -449,7 +418,7 @@
                     "type": "code",
                     "userCode": "    def refang(defanged_urls):\n        refanged_urls = []\n        \n   # interate over the list of urls\n        for url in defanged_urls:\n            if url == None or len(url) == 0:\n                # skip empty urls\n                continue\n                \n            phantom.debug(\"Before refang: {}\".format(url))\n            \n            url = url.replace(\"hxxp\", \"http\")\n            url = url.replace(\"[.]\", \".\")\n            url = url.replace(\"[at]\", \"@\")\n            url = url.replace(\"\\\\\", \"\")\n\n            phantom.debug(\"After refang: {}\".format(url))\n            \n            refanged_urls.append(url)\n            \n        return refanged_urls\n            \n\n    phantom.debug(list_urls_as_array__as_list)\n    refang_url__refanged_url = refang(list_urls_as_array__as_list)\n\n",
                     "warnings": {},
-                    "x": 170,
+                    "x": 0,
                     "y": 296
                 },
                 "4": {
@@ -473,113 +442,8 @@
                     "id": "4",
                     "type": "format",
                     "warnings": {},
-                    "x": 170,
-                    "y": 444
-                },
-                "6": {
-                    "data": {
-                        "advanced": {
-                            "customName": "url result filter",
-                            "customNameId": 0,
-                            "description": "Filters successful url reputation results.",
-                            "join": [],
-                            "notRequiredJoins": [],
-                            "note": "Filters successful url reputation results."
-                        },
-                        "conditions": [
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "url_reputation:action_result.status",
-                                        "value": "success"
-                                    }
-                                ],
-                                "conditionIndex": 0,
-                                "customName": "success",
-                                "logic": "and"
-                            },
-                            {
-                                "comparisons": [
-                                    {
-                                        "conditionIndex": 1,
-                                        "op": "==",
-                                        "param": "url_reputation:action_result.status",
-                                        "value": "failed"
-                                    }
-                                ],
-                                "conditionIndex": 1,
-                                "customName": "failure",
-                                "logic": "and"
-                            }
-                        ],
-                        "functionId": 1,
-                        "functionName": "url_result_filter",
-                        "id": "6",
-                        "type": "filter"
-                    },
-                    "errors": {},
-                    "id": "6",
-                    "type": "filter",
-                    "warnings": {
-                        "config": [
-                            "Reconfigure invalid datapath."
-                        ]
-                    },
-                    "x": 230,
-                    "y": 740
-                },
-                "7": {
-                    "data": {
-                        "action": "update event",
-                        "actionType": "generic",
-                        "advanced": {
-                            "join": []
-                        },
-                        "connector": "Splunk",
-                        "connectorConfigs": [
-                            "splunkes"
-                        ],
-                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "update_event_1",
-                        "id": "7",
-                        "loop": {
-                            "enabled": false,
-                            "exitAfterUnit": "m",
-                            "exitAfterValue": 10,
-                            "exitConditionEnabled": false,
-                            "exitLoopAfter": 2,
-                            "pauseUnit": "m",
-                            "pauseValue": 2
-                        },
-                        "parameters": {
-                            "comment": {
-                                "functionId": 1,
-                                "parameters": [
-                                    "list_urls_as_array:formatted_data"
-                                ],
-                                "template": "Not results found for URLs\n{0}\nConsider submitting for detonation"
-                            },
-                            "event_ids": "artifact:*.cef.event_id",
-                            "wait_for_confirmation": true
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "event_ids"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "7",
-                    "type": "action",
-                    "warnings": {},
                     "x": 0,
-                    "y": 1246
+                    "y": 444
                 },
                 "9": {
                     "data": {
@@ -600,7 +464,7 @@
                             "normalize_score_url:custom_function:categories",
                             "filtered-data:url_result_filter:condition_1:url_reputation:action_result.data.*.id"
                         ],
-                        "template": "SOAR analyzed URL(s) using VirusTotal.  The table below shows a summary of the information gathered.\n\n| URL | Normalized Score | Categories | Report Link | Source |\n| --- | --- | --- | --- | --- |\n%%\n| `{0}` |  | {2} | https://www.virustotal.com/gui/url/{3} | VirusTotal v3 |\n%%\n",
+                        "template": "SOAR detonated URL(s) using AnyRun.  The table below shows a summary of the information gathered.\n\n| URL | Normalized Score | Categories | Report Link | Source |\n| --- | --- | --- | --- | --- |\n%%\n| `{0}` |  | {2} | https://www.virustotal.com/gui/url/{3} | VirusTotal v3 |\n%%\n",
                         "type": "format"
                     },
                     "errors": {},
@@ -611,8 +475,8 @@
                             "Reconfigure invalid datapath."
                         ]
                     },
-                    "x": 340,
-                    "y": 920
+                    "x": 0,
+                    "y": 740
                 }
             },
             "notes": "",
@@ -630,7 +494,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2024-12-12T03:50:14.066593+00:00",
+    "create_time": "2024-12-12T04:01:06.624495+00:00",
     "draft_mode": false,
     "labels": [
         "*"

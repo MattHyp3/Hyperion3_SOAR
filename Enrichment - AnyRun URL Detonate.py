@@ -122,86 +122,6 @@ def fanged_urls(action=None, success=None, container=None, results=None, handle=
 
 
 @phantom.playbook_block()
-def url_result_filter(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("url_result_filter() called")
-
-    ################################################################################
-    # Filters successful url reputation results.
-    ################################################################################
-
-    # collect filtered artifact ids and results for 'if' condition 1
-    matched_artifacts_1, matched_results_1 = phantom.condition(
-        container=container,
-        conditions=[
-            ["url_reputation:action_result.status", "==", "success"]
-        ],
-        name="url_result_filter:condition_1",
-        delimiter=None)
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_1 or matched_results_1:
-        format_report_url(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_1, filtered_results=matched_results_1)
-
-    # collect filtered artifact ids and results for 'if' condition 2
-    matched_artifacts_2, matched_results_2 = phantom.condition(
-        container=container,
-        conditions=[
-            ["url_reputation:action_result.status", "==", "failed"]
-        ],
-        name="url_result_filter:condition_2",
-        delimiter=None)
-
-    # call connected blocks if filtered artifacts or results
-    if matched_artifacts_2 or matched_results_2:
-        update_event_1(action=action, success=success, container=container, results=results, handle=handle, filtered_artifacts=matched_artifacts_2, filtered_results=matched_results_2)
-
-    return
-
-
-@phantom.playbook_block()
-def update_event_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("update_event_1() called")
-
-    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
-
-    comment_formatted_string = phantom.format(
-        container=container,
-        template="""Not results found for URLs\n{0}\nConsider submitting for detonation""",
-        parameters=[
-            "list_urls_as_array:formatted_data"
-        ])
-
-    container_artifact_data = phantom.collect2(container=container, datapath=["artifact:*.cef.event_id","artifact:*.id"])
-    list_urls_as_array = phantom.get_format_data(name="list_urls_as_array")
-
-    parameters = []
-
-    # build parameters list for 'update_event_1' call
-    for container_artifact_item in container_artifact_data:
-        if container_artifact_item[0] is not None:
-            parameters.append({
-                "comment": comment_formatted_string,
-                "event_ids": container_artifact_item[0],
-                "wait_for_confirmation": True,
-                "context": {'artifact_id': container_artifact_item[1]},
-            })
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.act("update event", parameters=parameters, name="update_event_1", assets=["splunkes"])
-
-    return
-
-
-@phantom.playbook_block()
 def format_report_url(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_report_url() called")
 
@@ -209,7 +129,7 @@ def format_report_url(action=None, success=None, container=None, results=None, h
     # Format a summary table with the information gathered from the playbook.
     ################################################################################
 
-    template = """SOAR analyzed URL(s) using VirusTotal.  The table below shows a summary of the information gathered.\n\n| URL | Normalized Score | Categories | Report Link | Source |\n| --- | --- | --- | --- | --- |\n%%\n| `{0}` |  | {2} | https://www.virustotal.com/gui/url/{3} | VirusTotal v3 |\n%%\n"""
+    template = """SOAR detonated URL(s) using AnyRun.  The table below shows a summary of the information gathered.\n\n| URL | Normalized Score | Categories | Report Link | Source |\n| --- | --- | --- | --- | --- |\n%%\n| `{0}` |  | {2} | https://www.virustotal.com/gui/url/{3} | VirusTotal v3 |\n%%\n"""
 
     # parameter list for template variable replacement
     parameters = [
@@ -331,7 +251,7 @@ def detonate_url_1(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.act("detonate url", parameters=parameters, name="detonate_url_1", assets=["anyrun"], callback=url_result_filter)
+    phantom.act("detonate url", parameters=parameters, name="detonate_url_1", assets=["anyrun"], callback=format_report_url)
 
     return
 
