@@ -1,0 +1,278 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "Searches ServiceNow for incidents or changes related to the notable event",
+            "edges": [
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_0_to_port_7",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_7_to_port_2",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_4_to_port_9",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_8",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_1",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                }
+            ],
+            "hash": "e28eaaed56ed207046c9f25bbd01ae4ef08f62ce",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 19.999999999999986,
+                    "y": -200.00000000000003
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 19.999999999999986,
+                    "y": 660
+                },
+                "2": {
+                    "data": {
+                        "action": "list tickets",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "Filter Tickets and List",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "ServiceNow",
+                        "connectorConfigs": [
+                            "test snow"
+                        ],
+                        "connectorId": "a590c3bc-ca41-4a0e-b063-8066ca868794",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "filter_tickets_and_list",
+                        "id": "2",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "filter": {
+                                "functionId": 1,
+                                "parameters": [
+                                    ""
+                                ],
+                                "template": "{0}\n"
+                            },
+                            "max_results": 100,
+                            "table": "incident"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "default": "incident",
+                                "field": "table"
+                            },
+                            {
+                                "data_type": "numeric",
+                                "default": 100,
+                                "field": "max_results"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 120
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "customName": "get results",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "get_results",
+                        "id": "4",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 260
+                },
+                "7": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Get notable ID",
+                            "customNameId": 0,
+                            "drop_none": true,
+                            "join": []
+                        },
+                        "functionId": 4,
+                        "functionName": "get_notable_id",
+                        "id": "7",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 0,
+                    "y": -55.5
+                },
+                "8": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "add findings to ES notable",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "add_findings_to_es_notable",
+                        "id": "8",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": "format_es_update:formatted_data",
+                            "event_ids": "get_notable_id:formatted_data"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 500
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format ES update",
+                            "customNameId": 0,
+                            "drop_none": true,
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "format_es_update",
+                        "id": "9",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 0,
+                    "y": 380
+                }
+            },
+            "notes": ""
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
+    },
+    "create_time": "2025-02-10T00:05:48.723658+00:00",
+    "draft_mode": true,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
