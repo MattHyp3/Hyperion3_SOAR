@@ -180,7 +180,7 @@ def update_es_notable_1(action=None, success=None, container=None, results=None,
     for get_notables_approved__item in get_notables_approved__as_list:
         if get_notables_approved__item is not None:
             parameters.append({
-                "status": "remediation approved",
+                "status": "automation approved",
                 "comment": comment_formatted_string,
                 "event_ids": get_notables_approved__item,
                 "wait_for_confirmation": True,

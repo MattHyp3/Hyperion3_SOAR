@@ -87,7 +87,7 @@
                     "targetPort": "6_in"
                 }
             ],
-            "hash": "4b4ff63ad147fb615e26e9c1a48a28bce0378bd9",
+            "hash": "66d05fc30ac229ff19153dc090c858ea572f1da0",
             "nodes": {
                 "0": {
                     "data": {
@@ -103,7 +103,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 200,
-                    "y": 59.99999999999977
+                    "y": 59.99999999999966
                 },
                 "1": {
                     "data": {
@@ -501,7 +501,7 @@
                                 "template": "Automation Request was approved.\nConduct automation actions as required."
                             },
                             "event_ids": "get_notables_approved:formatted_data.*",
-                            "status": "remediation approved",
+                            "status": "automation approved",
                             "wait_for_confirmation": true
                         },
                         "requiredParameters": [
@@ -520,13 +520,7 @@
                     "y": 640
                 }
             },
-            "notes": "",
-            "origin": {
-                "playbook_id": 529,
-                "playbook_name": "MBB Approval Manager",
-                "playbook_repo_id": 16,
-                "playbook_repo_name": "soar-h3"
-            }
+            "notes": ""
         },
         "input_spec": null,
         "output_spec": null,
@@ -535,7 +529,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2025-07-09T05:16:56.117288+00:00",
+    "create_time": "2025-07-09T05:54:44.132913+00:00",
     "draft_mode": false,
     "labels": [
         "approval"
