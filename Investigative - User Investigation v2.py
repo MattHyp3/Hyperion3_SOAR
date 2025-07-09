@@ -888,11 +888,12 @@ def format_query_known_src(action=None, success=None, container=None, results=No
     # TBC adding stuff here
     ################################################################################
 
-    template = """count FROM datamodel=Authentication WHERE Authentication.user=\"{0}\" AND Authentication.src=\"{1}\"\n| lookup known_hosts.csv src AS Authentication.src\n| eval description = if(isnull(description),\"unknown\", description)\n| eval result = if(description=\"unknown\",0,1)\n| table src, description, result"""
+    template = """count FROM datamodel=Authentication WHERE Authentication.user=\"{0}\" AND Authentication.src=\"{1}\"\n| lookup known_hosts.csv src AS Authentication.src\n| eval description = if(isnull(description),\"unknown\", description)\n| eval result = if(description=\"unknown\",0,1)\n| table src, description, result{1}\n"""
 
     # parameter list for template variable replacement
     parameters = [
-        ""
+        "artifact:*.cef.suser",
+        "artifact:*.cef.src"
     ]
 
     ################################################################################
@@ -905,7 +906,7 @@ def format_query_known_src(action=None, success=None, container=None, results=No
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_query_known_src")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_query_known_src", drop_none=True)
 
     search_known_src(container=container)
 
@@ -990,7 +991,7 @@ def format_auth_known(action=None, success=None, container=None, results=None, h
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_known")
 
-    join_format_src_summary(container=container)
+    note_src_known(container=container)
 
     return
 
@@ -1227,6 +1228,27 @@ def format_src_summary(action=None, success=None, container=None, results=None, 
 @phantom.playbook_block()
 def note_src_unknown(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("note_src_unknown() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_note(note_format="markdown", note_type="general")
+
+    join_format_src_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def note_src_known(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("note_src_known() called")
 
     ################################################################################
     ## Custom Code Start
