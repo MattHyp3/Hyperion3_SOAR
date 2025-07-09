@@ -1,0 +1,1951 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "This playbook will install the Splunk Universal Forwarder on either Linux or Windows machines.",
+            "edges": [
+                {
+                    "id": "port_0_to_port_4",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_2_to_port_3",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_12_to_port_1",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_13_to_port_2",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_13_to_port_14",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
+                },
+                {
+                    "id": "port_24_to_port_25",
+                    "sourceNode": "24",
+                    "sourcePort": "24_out",
+                    "targetNode": "25",
+                    "targetPort": "25_in"
+                },
+                {
+                    "id": "port_25_to_port_26",
+                    "sourceNode": "25",
+                    "sourcePort": "25_out",
+                    "targetNode": "26",
+                    "targetPort": "26_in"
+                },
+                {
+                    "id": "port_0_to_port_29",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "29",
+                    "targetPort": "29_in"
+                },
+                {
+                    "id": "port_28_to_port_6",
+                    "sourceNode": "28",
+                    "sourcePort": "28_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_31_to_port_28",
+                    "sourceNode": "31",
+                    "sourcePort": "31_out",
+                    "targetNode": "28",
+                    "targetPort": "28_in"
+                },
+                {
+                    "id": "port_5_to_port_12",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_14_to_port_50",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
+                    "targetNode": "50",
+                    "targetPort": "50_in"
+                },
+                {
+                    "id": "port_50_to_port_12",
+                    "sourceNode": "50",
+                    "sourcePort": "50_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_3_to_port_57",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "57",
+                    "targetPort": "57_in"
+                },
+                {
+                    "id": "port_57_to_port_24",
+                    "sourceNode": "57",
+                    "sourcePort": "57_out",
+                    "targetNode": "24",
+                    "targetPort": "24_in"
+                },
+                {
+                    "id": "port_4_to_port_58",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "58",
+                    "targetPort": "58_in"
+                },
+                {
+                    "id": "port_58_to_port_59",
+                    "sourceNode": "58",
+                    "sourcePort": "58_out",
+                    "targetNode": "59",
+                    "targetPort": "59_in"
+                },
+                {
+                    "id": "port_59_to_port_60",
+                    "sourceNode": "59",
+                    "sourcePort": "59_out",
+                    "targetNode": "60",
+                    "targetPort": "60_in"
+                },
+                {
+                    "id": "port_60_to_port_61",
+                    "sourceNode": "60",
+                    "sourcePort": "60_out",
+                    "targetNode": "61",
+                    "targetPort": "61_in"
+                },
+                {
+                    "id": "port_65_to_port_66",
+                    "sourceNode": "65",
+                    "sourcePort": "65_out",
+                    "targetNode": "66",
+                    "targetPort": "66_in"
+                },
+                {
+                    "id": "port_67_to_port_5",
+                    "sourceNode": "67",
+                    "sourcePort": "67_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_64_to_port_65",
+                    "sourceNode": "64",
+                    "sourcePort": "64_out",
+                    "targetNode": "65",
+                    "targetPort": "65_in"
+                },
+                {
+                    "id": "port_61_to_port_62",
+                    "sourceNode": "61",
+                    "sourcePort": "61_out",
+                    "targetNode": "62",
+                    "targetPort": "62_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_29_to_port_13",
+                    "sourceNode": "29",
+                    "sourcePort": "29_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "id": "port_66_to_port_67",
+                    "sourceNode": "66",
+                    "sourcePort": "66_out",
+                    "targetNode": "67",
+                    "targetPort": "67_in"
+                },
+                {
+                    "id": "port_6_to_port_67",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "67",
+                    "targetPort": "67_in"
+                },
+                {
+                    "id": "port_26_to_port_31",
+                    "sourceNode": "26",
+                    "sourcePort": "26_out",
+                    "targetNode": "31",
+                    "targetPort": "31_in"
+                },
+                {
+                    "id": "port_62_to_port_64",
+                    "sourceNode": "62",
+                    "sourcePort": "62_out",
+                    "targetNode": "64",
+                    "targetPort": "64_in"
+                }
+            ],
+            "hash": "5d6591071e0b91500cae93a312cb7bf95c5e00ab",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": -340,
+                    "y": -260
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 100,
+                    "y": 1160
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "notRequiredJoins": [
+                                "update_artifact",
+                                "update_artifact_1",
+                                "update_artifact_2",
+                                "update_artifact_3",
+                                "delete_installer_1",
+                                "delete_installer_4",
+                                "update_artifact_4"
+                            ]
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_Container_Resolution_1",
+                        "id": "12",
+                        "inputs": {},
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "conditionIndex": 0,
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "display": "If",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "playbookName": "Container Resolution",
+                        "playbookRepo": 16,
+                        "playbookRepoName": "soar-h3",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 80,
+                    "y": 1060
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Check Approval",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This filter checks for ES status \"Remediation Approved\". If this status is not set, then the actions will not fire."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.status_label",
+                                        "value": "Approved"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "STATUS SET",
+                                "logic": "or"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "!=",
+                                        "param": "artifact:*.cef.status_label",
+                                        "value": "Approved"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "STATUS NOT SET",
+                                "logic": "or"
+                            }
+                        ],
+                        "functionId": 4,
+                        "functionName": "check_approval",
+                        "id": "13",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": -300,
+                    "y": 100
+                },
+                "14": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update ES Notable",
+                            "customNameId": 1,
+                            "join": [],
+                            "note": "This action block will send a comment to the Splunk Enterprise Security notable saying that the status is incorrectly set to proceed."
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "update_es_notable_1",
+                        "id": "14",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 2,
+                                "parameters": [],
+                                "template": "Current status of the notable is not acceptable. Please seek approval and have the Remediation Approved status set before running any of the endpoint agent playbooks."
+                            },
+                            "event_ids": "artifact:*.cef.event_id",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -360,
+                    "y": 280
+                },
+                "2": {
+                    "data": {
+                        "advanced": {
+                            "customName": "OS Type Filter",
+                            "customNameId": 2,
+                            "join": [],
+                            "note": "This filter will filter a host based on whether it is on a linux or windows platform."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.OS",
+                                        "value": "Linux"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "LINUX",
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.OS",
+                                        "value": "Windows"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "WINDOWS",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "os_type_filter_2",
+                        "id": "2",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 180,
+                    "y": -220
+                },
+                "24": {
+                    "data": {
+                        "action": "put file",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Put File",
+                            "customNameId": 0,
+                            "delayTime": 0,
+                            "join": [],
+                            "note": "This action block will put the script onto the destination host into the /root/ folder."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "put_file",
+                        "id": "24",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "file_destination": "/root/",
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "vault_id": "vault_id"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "vault_id"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "file_destination"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "24",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 160
+                },
+                "25": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Download Installer",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will download the installers required for the script to run onto the destination host."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "download_installer",
+                        "id": "25",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": {
+                                "functionId": 1,
+                                "parameters": [],
+                                "template": "bash script_rhel.sh agent_download /tmp/"
+                            },
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "25",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 280
+                },
+                "26": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Install Agent",
+                            "customNameId": 0,
+                            "delayTime": 0,
+                            "join": [],
+                            "note": "This action block will install the agent onto the destination host."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 4,
+                        "functionName": "install_agent",
+                        "id": "26",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": {
+                                "functionId": 4,
+                                "parameters": [],
+                                "template": "bash script_rhel.sh agent_install /tmp/"
+                            },
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "26",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 400
+                },
+                "28": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Delete Installer",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will delete the installer on the destination host."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 6,
+                        "functionName": "delete_installer",
+                        "id": "28",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": {
+                                "functionId": 6,
+                                "parameters": [],
+                                "template": "rm -rf /tmp/script_installer/"
+                            },
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "28",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 640
+                },
+                "29": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Artifact Filter",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This filter block will look for artifacts that do not have artifact_status = old_artifact to avoid the playbook running against old artifacts from other playbook runs."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.artifact_status",
+                                        "value": "old_artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "OLD ARTIFACT",
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.artifact_status",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "NEW ARTIFACT",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 6,
+                        "functionName": "artifact_filter",
+                        "id": "29",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "29",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": -300,
+                    "y": -100
+                },
+                "3": {
+                    "data": {
+                        "action": "get file",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "Pull Script",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will pull the Splunk Universal Forwarder script from the SOAR machine and add as a file to the container and allocate a vault ID."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "pull_script",
+                        "id": "3",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "conditionIndex": 0,
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "display": "If",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "file_path": {
+                                "functionId": 1,
+                                "parameters": [
+                                    ""
+                                ],
+                                "template": "/tmp/rhel/scipt_rhel.sh\n"
+                            },
+                            "ip_hostname": "127.0.0.1"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "file_path"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": -80
+                },
+                "31": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Agent Status",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will show the current agent status."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 7,
+                        "functionName": "agent_status",
+                        "id": "31",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": {
+                                "functionId": 7,
+                                "parameters": [
+                                    ""
+                                ],
+                                "template": "bash script_rhel.sh agent_status /tmp/"
+                            },
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "31",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 520
+                },
+                "4": {
+                    "data": {
+                        "action": "get file",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "Pull Script",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This action block will pull the Splunk Universal Forwarder script from the SOAR machine and add as a file to the container and allocate a vault ID."
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 4,
+                        "functionName": "pull_script_3",
+                        "id": "4",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "file_path": "/tmp/win/script_win.ps1s",
+                            "ip_hostname": "127.0.0.1"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "file_path"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": -80
+                },
+                "5": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Add Container Note",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This utility block will add a note to the SOAR container."
+                        },
+                        "functionId": 1,
+                        "functionName": "add_container_note",
+                        "id": "5",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "add_note": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "title",
+                                        "name": "title",
+                                        "placeholder": "Enter a note title",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "content",
+                                        "name": "content",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "markdown",
+                                            "html"
+                                        ],
+                                        "default": "markdown",
+                                        "description": "",
+                                        "label": "note format",
+                                        "name": "note_format",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": "general",
+                                        "hidden": true,
+                                        "name": "note_type",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "event_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "task_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add note",
+                                "name": "add_note"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "add_note": {
+                                "_internal": [
+                                    "container",
+                                    "note_type",
+                                    "author",
+                                    "event_id",
+                                    "task_id",
+                                    "trace"
+                                ],
+                                "content": "Splunk Universal Forwarder command to install the agent has been executed.",
+                                "note_format": "markdown",
+                                "note_type": "general",
+                                "title": "Splunk Universal Forwarder"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 600,
+                    "y": 40
+                },
+                "50": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Update Artifact",
+                            "customNameId": 2,
+                            "join": [],
+                            "note": "This utility block will update any new artifacts to have the old_artifact value."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_update",
+                            "repoName": "community"
+                        },
+                        "functionId": 7,
+                        "functionName": "update_artifact_2",
+                        "id": "50",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_update": {
+                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that an artifact_id must be provided and if one of cef_field or cef_value is provided then they must both be provided. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom artifact id"
+                                        ],
+                                        "description": "ID of the artifact to update, which is required unless artifact_id is a key within input_json",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "1234",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the name of the artifact.",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Change the label of the artifact.",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional input. Either True or False with default as False. If set to True, existing tags on the indicator record will be replaced by the provided input. If set to False, the new tags will be appended to the existing indicator tags.",
+                                        "inputType": "item",
+                                        "label": "overwrite_tags",
+                                        "name": "overwrite_tags",
+                                        "placeholder": "True or False",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_update",
+                                "name": "artifact_update"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_update": {
+                                "artifact_id": "artifact:*.id",
+                                "cef_data_type": null,
+                                "cef_field": "artifact_status",
+                                "cef_value": "old_artifact",
+                                "input_json": null,
+                                "label": null,
+                                "name": null,
+                                "overwrite_tags": "True",
+                                "severity": null,
+                                "tags": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "50",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": -360,
+                    "y": 400
+                },
+                "57": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Script Vault ID",
+                            "customNameId": 2,
+                            "join": [],
+                            "note": "This utility block will output the correct vault ID for the script file."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "vault_list",
+                            "repoName": "community"
+                        },
+                        "functionId": 12,
+                        "functionName": "script_vault_id_2",
+                        "id": "57",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "vault_list": {
+                                "description": "List all of the vault items based on the provided criteria such as a vault id, container id, and file name. If no inputs provided, it will default to current container. Returns a list of items. May return more variables than listed in outputs.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "Optional parameter to filter vault items from this specific container. Defaults to current container if no inputs provided.",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "container:id",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "vault id"
+                                        ],
+                                        "description": "Optional parameter to filter vault items matching this vault ID. Defaults to None.",
+                                        "inputType": "item",
+                                        "label": "vault_id",
+                                        "name": "vault_id",
+                                        "placeholder": "artifact:*.cef.vault_id",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "Optional parameter to filter vault items matching this file name. Defaults to None.",
+                                        "inputType": "item",
+                                        "label": "file_name",
+                                        "name": "file_name",
+                                        "placeholder": "artifact:*.cef.file_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "vault_list",
+                                "name": "vault_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "vault_list": {
+                                "container_id": null,
+                                "file_name": "script_rhel.sh",
+                                "vault_id": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "57",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 40
+                },
+                "58": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Script Vault ID",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This utility block will output the correct vault ID for the script file."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "vault_list",
+                            "repoName": "community"
+                        },
+                        "functionId": 13,
+                        "functionName": "script_vault_id_3",
+                        "id": "58",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "vault_list": {
+                                "description": "List all of the vault items based on the provided criteria such as a vault id, container id, and file name. If no inputs provided, it will default to current container. Returns a list of items. May return more variables than listed in outputs.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "Optional parameter to filter vault items from this specific container. Defaults to current container if no inputs provided.",
+                                        "inputType": "item",
+                                        "label": "container_id",
+                                        "name": "container_id",
+                                        "placeholder": "container:id",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "vault id"
+                                        ],
+                                        "description": "Optional parameter to filter vault items matching this vault ID. Defaults to None.",
+                                        "inputType": "item",
+                                        "label": "vault_id",
+                                        "name": "vault_id",
+                                        "placeholder": "artifact:*.cef.vault_id",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "Optional parameter to filter vault items matching this file name. Defaults to None.",
+                                        "inputType": "item",
+                                        "label": "file_name",
+                                        "name": "file_name",
+                                        "placeholder": "artifact:*.cef.file_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "vault_list",
+                                "name": "vault_list"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "vault_list": {
+                                "container_id": null,
+                                "file_name": "scipt_win.ps1s",
+                                "vault_id": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "58",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 40
+                },
+                "59": {
+                    "data": {
+                        "action": "run command",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Create Folder",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will create a temporary folder to store the script in for the destination host."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "create_folder",
+                        "id": "59",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "mkdir \"C:\\Temp\\SOAR\"",
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "59",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 160
+                },
+                "6": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update ES Notable",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will update the applicable Splunk Enterprise Notable with a comment."
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_es_notable",
+                        "id": "6",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 1,
+                                "parameters": [
+                                    "agent_status:action_result.data.*.output",
+                                    "agent_status:action_result.data.*.output"
+                                ],
+                                "template": "Splunk Universal Forwarder command to install the agent has been executed.\n\nAgent Version: {0}\nAgent Status: {1}\n"
+                            },
+                            "event_ids": "artifact:*.cef.event_id",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 760
+                },
+                "60": {
+                    "data": {
+                        "action": "upload file",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Put File",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This action block will put the script onto the destination host into the C:\\Temp\\SOAR folder."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "put_file_3",
+                        "id": "60",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "destination": "C:\\Temp\\SOAR\\script_win.ps1",
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "vault_id": "pull_script_3:action_result.summary.vault_id"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "vault_id"
+                            },
+                            {
+                                "data_type": "string",
+                                "field": "destination"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "60",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 280
+                },
+                "61": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Download Installer",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This action block will download the installers required for the script to run onto the destination host."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "download_installer_3",
+                        "id": "61",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 1,
+                                "parameters": [],
+                                "template": "cd \"C:\\Temp\\SOAR\"; .\\script_win.ps1 agent_download"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "61",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 400
+                },
+                "62": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Install Agent",
+                            "customNameId": 3,
+                            "delayTime": 0,
+                            "join": [],
+                            "note": "This action block will install the agent onto the destination host."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "install_agent_3",
+                        "id": "62",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 2,
+                                "parameters": [],
+                                "template": "cd \"C:\\Temp\\SOAR\"; .\\script_win.ps1 agent_install"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "62",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 520
+                },
+                "64": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Agent Status",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This action block will show the current agent status."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 4,
+                        "functionName": "agent_status_3",
+                        "id": "64",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 4,
+                                "parameters": [],
+                                "template": "cd \"C:\\Temp\\SOAR\"; .\\script_win.ps1 agent_status"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "64",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 640
+                },
+                "65": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Delete Installer",
+                            "customNameId": 3,
+                            "join": [],
+                            "note": "This action block will delete the installer on the destination host."
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 5,
+                        "functionName": "delete_installer_3",
+                        "id": "65",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 5,
+                                "parameters": [],
+                                "template": "Remove-Item -Path \"C:\\Temp\\SOAR\" -Recurse -Force"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "65",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 760
+                },
+                "66": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update ES Notable",
+                            "customNameId": 4,
+                            "join": [],
+                            "note": "This action block will update the applicable Splunk Enterprise Notable with a comment."
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 5,
+                        "functionName": "update_es_notable_4",
+                        "id": "66",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 5,
+                                "parameters": [
+                                    "agent_version_3:action_result.data.*.std_out",
+                                    "agent_status_3:action_result.data.*.std_out"
+                                ],
+                                "template": "Splunk Universal Forwarder command to install the agent has been executed.\n\nAgent Version: {0}\nAgent Status: {1}"
+                            },
+                            "event_ids": "artifact:*.cef.event_id",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "66",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 280,
+                    "y": 900
+                },
+                "67": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Update Artifact",
+                            "customNameId": 3,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "update_es_notable_4",
+                                "update_es_notable"
+                            ],
+                            "note": "This utility block will update any new artifacts to have the old_artifact value."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_update",
+                            "repoName": "community"
+                        },
+                        "functionId": 5,
+                        "functionName": "update_artifact_3",
+                        "id": "67",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_update": {
+                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that an artifact_id must be provided and if one of cef_field or cef_value is provided then they must both be provided. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom artifact id"
+                                        ],
+                                        "description": "ID of the artifact to update, which is required unless artifact_id is a key within input_json",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "1234",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the name of the artifact.",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Change the label of the artifact.",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional input. Either True or False with default as False. If set to True, existing tags on the indicator record will be replaced by the provided input. If set to False, the new tags will be appended to the existing indicator tags.",
+                                        "inputType": "item",
+                                        "label": "overwrite_tags",
+                                        "name": "overwrite_tags",
+                                        "placeholder": "True or False",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_update",
+                                "name": "artifact_update"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_update": {
+                                "artifact_id": "artifact:*.id",
+                                "cef_data_type": null,
+                                "cef_field": "artifact_status",
+                                "cef_value": "old_artifact",
+                                "input_json": null,
+                                "label": null,
+                                "name": null,
+                                "overwrite_tags": "True",
+                                "severity": null,
+                                "tags": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "67",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 600,
+                    "y": -80
+                }
+            },
+            "notes": "",
+            "origin": {
+                "playbook_id": 539,
+                "playbook_name": "Use Case 2 Splunk Universal Forwarder Agent Install",
+                "playbook_repo_id": 2,
+                "playbook_repo_name": "local"
+            }
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
+    },
+    "create_time": "2025-07-09T03:26:17.222886+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
