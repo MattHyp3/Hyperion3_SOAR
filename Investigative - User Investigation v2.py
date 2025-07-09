@@ -167,6 +167,7 @@ def format_auth_yes(action=None, success=None, container=None, results=None, han
     phantom.format(container=container, template=template, parameters=parameters, name="format_auth_yes")
 
     format_query_auth_hosts(container=container)
+    format_query_known_src(container=container)
 
     return
 
@@ -270,7 +271,7 @@ def format_auth_host_results(action=None, success=None, container=None, results=
     # parameter list for template variable replacement
     parameters = [
         "search_user_auth_hosts:action_result.data.*.host_count",
-        "search_makeresults_hosts:action_result.data.*.hosts"
+        "makeresults_host_list:action_result.data.*.hosts"
     ]
 
     ################################################################################
@@ -298,11 +299,12 @@ def join_format_auth_summary(action=None, success=None, container=None, results=
     if phantom.get_run_data(key="join_format_auth_summary_called"):
         return
 
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
+    if phantom.completed(action_names=["makeresults_host_list", "makeresults_add_src"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_format_auth_summary_called", value="format_auth_summary")
 
-    # call connected block "format_auth_summary"
-    format_auth_summary(container=container, handle=handle)
+        # call connected block "format_auth_summary"
+        format_auth_summary(container=container, handle=handle)
 
     return
 
@@ -330,7 +332,7 @@ def format_auth_summary(action=None, success=None, container=None, results=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_summary")
+    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_summary", drop_none=True)
 
     format_query_malware(container=container)
 
@@ -381,14 +383,14 @@ def format_host_results(action=None, success=None, container=None, results=None,
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_host_results")
 
-    search_makeresults_hosts(container=container)
+    makeresults_host_list(container=container)
 
     return
 
 
 @phantom.playbook_block()
-def search_makeresults_hosts(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("search_makeresults_hosts() called")
+def makeresults_host_list(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("makeresults_host_list() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -415,7 +417,7 @@ def search_makeresults_hosts(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("run query", parameters=parameters, name="search_makeresults_hosts", assets=["splunkes"], callback=format_auth_host_results)
+    phantom.act("run query", parameters=parameters, name="makeresults_host_list", assets=["splunkes"], callback=format_auth_host_results)
 
     return
 
@@ -462,7 +464,7 @@ def format_query_malware(action=None, success=None, container=None, results=None
 
     # parameter list for template variable replacement
     parameters = [
-        "search_makeresults_hosts:action_result.data.*.hosts"
+        "makeresults_host_list:action_result.data.*.hosts"
     ]
 
     ################################################################################
@@ -513,7 +515,7 @@ def format_malware_yes(action=None, success=None, container=None, results=None, 
 
     # parameter list for template variable replacement
     parameters = [
-        "search_makeresults_hosts:action_result.data.*.hosts"
+        "makeresults_host_list:action_result.data.*.hosts"
     ]
 
     ################################################################################
@@ -541,7 +543,7 @@ def format_malware_no(action=None, success=None, container=None, results=None, h
 
     # parameter list for template variable replacement
     parameters = [
-        "search_makeresults_hosts:action_result.data.*.hosts"
+        "makeresults_host_list:action_result.data.*.hosts"
     ]
 
     ################################################################################
@@ -874,6 +876,371 @@ def add_note_4(action=None, success=None, container=None, results=None, handle=N
     ################################################################################
 
     phantom.add_note(container=container, content=search_makeresults_hosts_result_item_0, note_format="markdown", note_type="general", title="Modified String Value")
+
+    return
+
+
+@phantom.playbook_block()
+def format_query_known_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_query_known_src() called")
+
+    ################################################################################
+    # TBC adding stuff here
+    ################################################################################
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_query_known_src")
+
+    search_known_src(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def search_known_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("search_known_src() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    format_query_known_src = phantom.get_format_data(name="format_query_known_src")
+
+    parameters = []
+
+    if format_query_known_src is not None:
+        parameters.append({
+            "command": "search",
+            "search_mode": "smart",
+            "query": format_query_known_src,
+        })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("run query", parameters=parameters, name="search_known_src", assets=["splunkes"], callback=decide_permitted_src)
+
+    return
+
+
+@phantom.playbook_block()
+def decide_permitted_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("decide_permitted_src() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["format_query_known_src:formatted_data.*", "==", 1]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        format_auth_known(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    format_auth_unknown(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_auth_known(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_auth_known() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_known")
+
+    join_format_src_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_auth_unknown(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_auth_unknown() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_auth_unknown")
+
+    prompt_add_known_src(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def prompt_add_known_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("prompt_add_known_src() called")
+
+    # set user and message variables for phantom.prompt call
+
+    user = container.get('owner_name', None)
+    role = None
+    message = """User '{0}' has accessed the network from an unknown source address '{1}'"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "artifact:*.cef.src"
+    ]
+
+    # responses
+    response_types = [
+        {
+            "prompt": "Add new source to known host list?",
+            "options": {
+                "type": "list",
+                "choices": [
+                    "Yes",
+                    "No"
+                ],
+            },
+        },
+        {
+            "prompt": "Add a description of this source:",
+            "options": {
+                "type": "message",
+            },
+        }
+    ]
+
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_add_known_src", parameters=parameters, response_types=response_types, callback=decision_5)
+
+    return
+
+
+@phantom.playbook_block()
+def makeresults_add_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("makeresults_add_src() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    search_known_src_result_data = phantom.collect2(container=container, datapath=["search_known_src:action_result.parameter.query","search_known_src:action_result.parameter.context.artifact_id"], action_results=results)
+
+    parameters = []
+
+    # build parameters list for 'makeresults_add_src' call
+    for search_known_src_result_item in search_known_src_result_data:
+        if search_known_src_result_item[0] is not None:
+            parameters.append({
+                "command": "| makeresults",
+                "search_mode": "smart",
+                "query": search_known_src_result_item[0],
+                "context": {'artifact_id': search_known_src_result_item[1]},
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("run query", parameters=parameters, name="makeresults_add_src", assets=["splunkes"], callback=join_format_src_summary)
+
+    return
+
+
+@phantom.playbook_block()
+def decision_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("decision_5() called")
+
+    # check for 'if' condition 1
+    found_match_1 = phantom.decision(
+        container=container,
+        conditions=[
+            ["prompt_add_known_src:action_result.summary.responses.0", "==", "Yes"]
+        ],
+        delimiter=None)
+
+    # call connected blocks if condition 1 matched
+    if found_match_1:
+        format_query_add_src(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # check for 'else' condition 2
+    format_note_src_unknown(action=action, success=success, container=container, results=results, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_query_add_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_query_add_src() called")
+
+    template = """| eval src=\"{0}\", description=\"{1}\"\n| tabe src, description\n| outputlookup append=true known_hosts.csv\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        "artifact:*.cef.src",
+        "prompt_add_known_src:action_result.summary.responses.1"
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_query_add_src")
+
+    makeresults_add_src(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def format_note_src_unknown(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_note_src_unknown() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_note_src_unknown")
+
+    note_src_unknown(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def join_format_src_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("join_format_src_summary() called")
+
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key="join_format_src_summary_called"):
+        return
+
+    if phantom.completed(action_names=["makeresults_add_src"]):
+        # save the state that the joined function has now been called
+        phantom.save_run_data(key="join_format_src_summary_called", value="format_src_summary")
+
+        # call connected block "format_src_summary"
+        format_src_summary(container=container, handle=handle)
+
+    return
+
+
+@phantom.playbook_block()
+def format_src_summary(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("format_src_summary() called")
+
+    template = """{0}\n"""
+
+    # parameter list for template variable replacement
+    parameters = [
+        ""
+    ]
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.format(container=container, template=template, parameters=parameters, name="format_src_summary", drop_none=True)
+
+    join_format_auth_summary(container=container)
+
+    return
+
+
+@phantom.playbook_block()
+def note_src_unknown(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("note_src_unknown() called")
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.add_note(note_format="markdown", note_type="general")
+
+    join_format_src_summary(container=container)
 
     return
 

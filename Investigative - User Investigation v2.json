@@ -245,9 +245,134 @@
                     "sourcePort": "9_out",
                     "targetNode": "13",
                     "targetPort": "13_in"
+                },
+                {
+                    "id": "port_6_to_port_32",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "32",
+                    "targetPort": "32_in"
+                },
+                {
+                    "id": "port_32_to_port_33",
+                    "sourceNode": "32",
+                    "sourcePort": "32_out",
+                    "targetNode": "33",
+                    "targetPort": "33_in"
+                },
+                {
+                    "id": "port_33_to_port_34",
+                    "sourceNode": "33",
+                    "sourcePort": "33_out",
+                    "targetNode": "34",
+                    "targetPort": "34_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_34_to_port_35",
+                    "sourceNode": "34",
+                    "sourcePort": "34_out",
+                    "targetNode": "35",
+                    "targetPort": "35_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_34_to_port_36",
+                    "sourceNode": "34",
+                    "sourcePort": "34_out",
+                    "targetNode": "36",
+                    "targetPort": "36_in"
+                },
+                {
+                    "id": "port_36_to_port_37",
+                    "sourceNode": "36",
+                    "sourcePort": "36_out",
+                    "targetNode": "37",
+                    "targetPort": "37_in"
+                },
+                {
+                    "id": "port_37_to_port_39",
+                    "sourceNode": "37",
+                    "sourcePort": "37_out",
+                    "targetNode": "39",
+                    "targetPort": "39_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_39_to_port_40",
+                    "sourceNode": "39",
+                    "sourcePort": "39_out",
+                    "targetNode": "40",
+                    "targetPort": "40_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_39_to_port_41",
+                    "sourceNode": "39",
+                    "sourcePort": "39_out",
+                    "targetNode": "41",
+                    "targetPort": "41_in"
+                },
+                {
+                    "id": "port_35_to_port_42",
+                    "sourceNode": "35",
+                    "sourcePort": "35_out",
+                    "targetNode": "42",
+                    "targetPort": "42_in"
+                },
+                {
+                    "id": "port_40_to_port_38",
+                    "sourceNode": "40",
+                    "sourcePort": "40_out",
+                    "targetNode": "38",
+                    "targetPort": "38_in"
+                },
+                {
+                    "id": "port_38_to_port_42",
+                    "sourceNode": "38",
+                    "sourcePort": "38_out",
+                    "targetNode": "42",
+                    "targetPort": "42_in"
+                },
+                {
+                    "id": "port_42_to_port_11",
+                    "sourceNode": "42",
+                    "sourcePort": "42_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_41_to_port_43",
+                    "sourceNode": "41",
+                    "sourcePort": "41_out",
+                    "targetNode": "43",
+                    "targetPort": "43_in"
+                },
+                {
+                    "id": "port_43_to_port_42",
+                    "sourceNode": "43",
+                    "sourcePort": "43_out",
+                    "targetNode": "42",
+                    "targetPort": "42_in"
                 }
             ],
-            "hash": "a6e80b8595858dda6318b22cfa4e7f863f2a16e6",
+            "hash": "e0f8efea1e2eb380803cf90891b626e161f54d64",
             "nodes": {
                 "0": {
                     "data": {
@@ -263,7 +388,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.99999999999926
+                    "y": 419.99999999999915
                 },
                 "1": {
                     "data": {
@@ -278,8 +403,8 @@
                     "id": "1",
                     "type": "end",
                     "warnings": {},
-                    "x": 1320,
-                    "y": 2080
+                    "x": 1720,
+                    "y": 2640
                 },
                 "10": {
                     "data": {
@@ -294,7 +419,7 @@
                         "id": "10",
                         "parameters": [
                             "search_user_auth_hosts:action_result.data.*.host_count",
-                            "search_makeresults_hosts:action_result.data.*.hosts"
+                            "makeresults_host_list:action_result.data.*.hosts"
                         ],
                         "template": "How many hosts has the user logged onto in the time period?\n**{0}**\n\nWhat were the unique hosts involved?\n**{1}**\n",
                         "type": "format"
@@ -303,18 +428,22 @@
                     "id": "10",
                     "type": "format",
                     "warnings": {},
-                    "x": 820,
-                    "y": 1460
+                    "x": 960,
+                    "y": 1480
                 },
                 "11": {
                     "data": {
                         "advanced": {
                             "customName": "format_auth_summary",
                             "customNameId": 0,
+                            "drop_none": true,
                             "join": [],
                             "notRequiredJoins": [
                                 "search_user_auth",
-                                "search_makeresults_hosts"
+                                "search_makeresults_hosts",
+                                "search_known_src",
+                                "prompt_add_known_src",
+                                "run_query_9"
                             ]
                         },
                         "functionId": 6,
@@ -332,8 +461,8 @@
                     "id": "11",
                     "type": "format",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 1600
+                    "x": 820,
+                    "y": 2100
                 },
                 "12": {
                     "data": {
@@ -446,8 +575,8 @@
                     "id": "12",
                     "type": "utility",
                     "warnings": {},
-                    "x": 1300,
-                    "y": 1960
+                    "x": 1580,
+                    "y": 2420
                 },
                 "13": {
                     "data": {
@@ -477,7 +606,7 @@
                         "action": "run query",
                         "actionType": "investigate",
                         "advanced": {
-                            "customName": "search_makeresults_hosts",
+                            "customName": "makeresults_host_list",
                             "customNameId": 0,
                             "join": []
                         },
@@ -488,7 +617,7 @@
                         "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
                         "connectorVersion": "v1",
                         "functionId": 3,
-                        "functionName": "search_makeresults_hosts",
+                        "functionName": "makeresults_host_list",
                         "id": "14",
                         "loop": {
                             "enabled": false,
@@ -601,7 +730,7 @@
                         "functionName": "format_query_malware",
                         "id": "16",
                         "parameters": [
-                            "search_makeresults_hosts:action_result.data.*.hosts"
+                            "makeresults_host_list:action_result.data.*.hosts"
                         ],
                         "template": "count from datamodel=Malware where host IN ({0})\n| eval result = if(count > 0, \"1\", \"0\")\n| fields result",
                         "type": "format"
@@ -675,7 +804,7 @@
                         "functionName": "format_malware_yes",
                         "id": "18",
                         "parameters": [
-                            "search_makeresults_hosts:action_result.data.*.hosts"
+                            "makeresults_host_list:action_result.data.*.hosts"
                         ],
                         "template": "Has Malware been detected on any of the hosts of interest ({0})?\n**Yes**\n\nStarting Incident Response\n",
                         "type": "format"
@@ -698,7 +827,7 @@
                         "functionName": "format_malware_no",
                         "id": "19",
                         "parameters": [
-                            "search_makeresults_hosts:action_result.data.*.hosts"
+                            "makeresults_host_list:action_result.data.*.hosts"
                         ],
                         "template": "Has Malware been detected on any of the hosts of interest ({0})?\n**No**",
                         "type": "format"
@@ -841,8 +970,8 @@
                     "id": "22",
                     "type": "format",
                     "warnings": {},
-                    "x": 1300,
-                    "y": 1840
+                    "x": 1580,
+                    "y": 2300
                 },
                 "23": {
                     "data": {
@@ -861,11 +990,7 @@
                     "errors": {},
                     "id": "23",
                     "type": "format",
-                    "warnings": {
-                        "context": [
-                            "Connect block to playbook flow."
-                        ]
-                    },
+                    "warnings": {},
                     "x": 2180,
                     "y": 500
                 },
@@ -1268,9 +1393,6 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
-                        ],
-                        "context": [
-                            "Connect block to playbook flow."
                         ]
                     },
                     "x": 1900,
@@ -1393,6 +1515,332 @@
                     },
                     "x": 1900,
                     "y": 2060
+                },
+                "32": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_query_known_src",
+                            "customNameId": 0,
+                            "description": "TBC adding stuff here",
+                            "join": []
+                        },
+                        "functionId": 16,
+                        "functionName": "format_query_known_src",
+                        "id": "32",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "32",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 360,
+                    "y": 1000
+                },
+                "33": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "search_known_src",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 8,
+                        "functionName": "search_known_src",
+                        "id": "33",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "search",
+                            "query": "format_query_known_src:formatted_data",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "33",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 360,
+                    "y": 1120
+                },
+                "34": {
+                    "data": {
+                        "advanced": {
+                            "customName": "decide_permitted_src",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "format_query_known_src:formatted_data.*",
+                                        "value": "1"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "known",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "unknown",
+                                "display": "Else",
+                                "logic": "and",
+                                "type": "else"
+                            }
+                        ],
+                        "functionId": 4,
+                        "functionName": "decide_permitted_src",
+                        "id": "34",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "34",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 440,
+                    "y": 1240
+                },
+                "35": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_auth_known",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 17,
+                        "functionName": "format_auth_known",
+                        "id": "35",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "35",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 200,
+                    "y": 1400
+                },
+                "36": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_auth_unknown",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 18,
+                        "functionName": "format_auth_unknown",
+                        "id": "36",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "36",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 520,
+                    "y": 1400
+                },
+                "37": {
+                    "data": {
+                        "advanced": {
+                            "customName": "prompt_add_known_src",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "approver": {
+                            "type": "user",
+                            "value": "container_owner"
+                        },
+                        "functionId": 1,
+                        "functionName": "prompt_add_known_src",
+                        "id": "37",
+                        "message": "User '{0}' has accessed the network from an unknown source address '{1}'",
+                        "parameters": [
+                            "artifact:*.cef.src"
+                        ],
+                        "responseTime": 30,
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "Yes",
+                                    "No"
+                                ],
+                                "responsePrompt": "Add new source to known host list?",
+                                "responseType": "yes/no"
+                            },
+                            {
+                                "responseOptions": [],
+                                "responsePrompt": "Add a description of this source:",
+                                "responseType": "message"
+                            }
+                        ],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "37",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 540,
+                    "y": 1520
+                },
+                "38": {
+                    "data": {
+                        "action": "run query",
+                        "actionType": "investigate",
+                        "advanced": {
+                            "customName": "makeresults_add_src",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 9,
+                        "functionName": "makeresults_add_src",
+                        "id": "38",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "| makeresults",
+                            "query": "search_known_src:action_result.parameter.query",
+                            "search_mode": "smart"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "query"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "search",
+                                "field": "command"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "smart",
+                                "field": "search_mode"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "38",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 460,
+                    "y": 1800
+                },
+                "39": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "prompt_add_known_src:action_result.summary.responses.0",
+                                        "value": "Yes"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "yes",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "no",
+                                "display": "Else",
+                                "logic": "and",
+                                "type": "else"
+                            }
+                        ],
+                        "functionId": 5,
+                        "functionName": "decision_5",
+                        "id": "39",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "39",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 680,
+                    "y": 1520
                 },
                 "4": {
                     "data": {
@@ -1575,10 +2023,197 @@
                     "warnings": {
                         "config": [
                             "Reconfigure invalid datapath."
+                        ],
+                        "context": [
+                            "Connect block to playbook flow."
                         ]
                     },
-                    "x": 1020,
-                    "y": 1960
+                    "x": 140,
+                    "y": 1240
+                },
+                "40": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_query_add_src",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 19,
+                        "functionName": "format_query_add_src",
+                        "id": "40",
+                        "parameters": [
+                            "artifact:*.cef.src",
+                            "prompt_add_known_src:action_result.summary.responses.1"
+                        ],
+                        "template": "| eval src=\"{0}\", description=\"{1}\"\n| tabe src, description\n| outputlookup append=true known_hosts.csv\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "40",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 460,
+                    "y": 1700
+                },
+                "41": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_note_src_unknown",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 20,
+                        "functionName": "format_note_src_unknown",
+                        "id": "41",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "41",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 740,
+                    "y": 1700
+                },
+                "42": {
+                    "data": {
+                        "advanced": {
+                            "customName": "format_src_summary",
+                            "customNameId": 0,
+                            "drop_none": true,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "search_known_src",
+                                "run_query_9",
+                                "prompt_add_known_src"
+                            ]
+                        },
+                        "functionId": 21,
+                        "functionName": "format_src_summary",
+                        "id": "42",
+                        "parameters": [
+                            ""
+                        ],
+                        "template": "{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "42",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 460,
+                    "y": 1940
+                },
+                "43": {
+                    "data": {
+                        "advanced": {
+                            "customName": "note_src_unknown",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "note_src_unknown",
+                        "id": "43",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "add_note": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "title",
+                                        "name": "title",
+                                        "placeholder": "Enter a note title",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "content",
+                                        "name": "content",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "markdown",
+                                            "html"
+                                        ],
+                                        "default": "markdown",
+                                        "description": "",
+                                        "label": "note format",
+                                        "name": "note_format",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": "general",
+                                        "hidden": true,
+                                        "name": "note_type",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "event_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "task_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add note",
+                                "name": "add_note"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "add_note": {
+                                "content": null,
+                                "note_format": "markdown",
+                                "note_type": "general",
+                                "title": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "43",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 740,
+                    "y": 1800
                 },
                 "5": {
                     "data": {
@@ -1775,7 +2410,7 @@
         "schema": "5.0.11",
         "version": "6.2.0.355"
     },
-    "create_time": "2025-07-08T10:25:55.183222+00:00",
+    "create_time": "2025-07-09T05:20:36.008014+00:00",
     "draft_mode": false,
     "labels": [
         "*"
