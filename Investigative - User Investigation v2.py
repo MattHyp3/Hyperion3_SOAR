@@ -1125,7 +1125,7 @@ def decision_5(action=None, success=None, container=None, results=None, handle=N
 def format_query_add_src(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_query_add_src() called")
 
-    template = """| eval src=\"{0}\", description=\"{1}\"\n| tabe src, description\n| outputlookup append=true known_hosts.csv\n"""
+    template = """| eval src=\"{0}\", description=\"{1}\"\n| table src, description\n| outputlookup append=true known_hosts.csv\n"""
 
     # parameter list for template variable replacement
     parameters = [
