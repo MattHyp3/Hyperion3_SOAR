@@ -888,7 +888,7 @@ def format_query_known_src(action=None, success=None, container=None, results=No
     # TBC adding stuff here
     ################################################################################
 
-    template = """{0}\n"""
+    template = """count FROM datamodel=Authentication WHERE Authentication.user=\"{0}\" AND Authentication.src=\"{1}\"\n| lookup known_hosts.csv src AS Authentication.src\n| eval description = if(isnull(description),\"unknown\", description)\n| eval result = if(description=\"unknown\",0,1)\n| table src, description, result"""
 
     # parameter list for template variable replacement
     parameters = [
@@ -924,7 +924,7 @@ def search_known_src(action=None, success=None, container=None, results=None, ha
 
     if format_query_known_src is not None:
         parameters.append({
-            "command": "search",
+            "command": "|  tstats",
             "search_mode": "smart",
             "query": format_query_known_src,
         })
