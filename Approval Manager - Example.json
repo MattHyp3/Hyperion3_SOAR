@@ -1,0 +1,544 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "This playbook will automatically run as a sub playbook when correlation search \"Request Monitor\" triggers based on an ES notable status change to \"Remediation Requested\". ",
+            "edges": [
+                {
+                    "id": "port_3_to_port_4",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_6_to_port_1",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_0_to_port_10",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_3",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_11",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_11_to_port_9",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_4_to_port_12",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "id": "port_12_to_port_5",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_9_to_port_6",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                }
+            ],
+            "hash": "4b4ff63ad147fb615e26e9c1a48a28bce0378bd9",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 200,
+                    "y": 59.99999999999977
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 200,
+                    "y": 880
+                },
+                "10": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Format Approval Message",
+                            "customNameId": 0,
+                            "description": "",
+                            "drop_none": true,
+                            "join": [],
+                            "note": "Formats a message for the approver and gathers the hostnames requiring remediation.",
+                            "separator": ","
+                        },
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.Comment": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.Comment",
+                                    "value": "artifact:*.cef.Comment"
+                                },
+                                "artifact:*.cef.Endpoint": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.Endpoint",
+                                    "value": "artifact:*.cef.Endpoint"
+                                },
+                                "artifact:*.cef.owner": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.owner",
+                                    "value": "artifact:*.cef.owner"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "format_approval_message",
+                        "id": "10",
+                        "parameters": [
+                            "artifact:*.cef.Endpoint",
+                            "artifact:*.cef.owner",
+                            "artifact:*.cef.Comment"
+                        ],
+                        "template": "{1} has requested approval for automation on the following hosts\n\n{0}\n\n{1}'s comment\n{2}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 180,
+                    "y": 140
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Get Notables Approved",
+                            "customNameId": 0,
+                            "description": "",
+                            "drop_none": true,
+                            "join": [],
+                            "note": "Gathers all notable IDs previously created by onboarding playbook as a list"
+                        },
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.notable_id": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.notable_id",
+                                    "value": "artifact:*.cef.notable_id"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "get_notables_approved",
+                        "id": "11",
+                        "parameters": [
+                            "artifact:*.cef.notable_id"
+                        ],
+                        "template": "%%\n{0}\n%%\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 520
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Get Notables Denied",
+                            "customNameId": 0,
+                            "description": "",
+                            "drop_none": true,
+                            "join": [],
+                            "note": "Gathers all notable IDs previously created by onboarding playbook as a list"
+                        },
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.notable_id": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.notable_id",
+                                    "value": "artifact:*.cef.notable_id"
+                                }
+                            }
+                        },
+                        "functionId": 3,
+                        "functionName": "get_notables_denied",
+                        "id": "12",
+                        "parameters": [
+                            "artifact:*.cef.notable_id"
+                        ],
+                        "template": "%%\n{0}\n%%",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 40,
+                    "y": 520
+                },
+                "3": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Approval",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This prompt is asking for approval to allow SOAR to continue with agent automation."
+                        },
+                        "approver": {
+                            "type": "role",
+                            "value": "Asset Owner"
+                        },
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.Endpoint": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.Endpoint",
+                                    "value": "artifact:*.cef.Endpoint"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "approval",
+                        "id": "3",
+                        "message": "{0}",
+                        "parameters": [
+                            "format_approval_message:formatted_data"
+                        ],
+                        "responseTime": 720,
+                        "responses": [
+                            {
+                                "responseOptions": [
+                                    "Yes",
+                                    "No"
+                                ],
+                                "responsePrompt": "Approve Splunk ES notable for endpoint agent automation?",
+                                "responseType": "yes/no"
+                            }
+                        ],
+                        "type": "prompt"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "prompt",
+                    "warnings": {},
+                    "x": 260,
+                    "y": 260
+                },
+                "4": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Approved",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This decision block will look at the answers from the approval prompt block for either 'Yes' or 'No' and route to either Approved(Yes) or Not Approved(No)."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "approval:action_result.summary.responses.0",
+                                        "value": "Yes"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "Approved",
+                                "display": "If",
+                                "logic": "and",
+                                "type": "if"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "Not Approved",
+                                "display": "Else",
+                                "logic": "and",
+                                "type": "else"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "approved",
+                        "id": "4",
+                        "type": "decision"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "decision",
+                    "warnings": {},
+                    "x": 260,
+                    "y": 380
+                },
+                "5": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update ES Notable",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This action block will update the applicable Splunk Enterprise Notable with a comment."
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_es_notable",
+                        "id": "5",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 1,
+                                "parameters": [
+                                    "container:id",
+                                    "container:url"
+                                ],
+                                "template": "Automation Request was denied."
+                            },
+                            "event_ids": "get_notables_denied:formatted_data.*",
+                            "status": "remediation denied",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 40,
+                    "y": 640
+                },
+                "6": {
+                    "data": {
+                        "advanced": {
+                            "join": [],
+                            "notRequiredJoins": [
+                                "update_es_notable",
+                                "update_es_notable_1"
+                            ]
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_Container_Resolution_1",
+                        "id": "6",
+                        "inputs": {},
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "conditionIndex": 0,
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "display": "If",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "playbookName": "Container Resolution",
+                        "playbookRepo": 16,
+                        "playbookRepoName": "soar-h3",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 180,
+                    "y": 780
+                },
+                "9": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update ES Notable",
+                            "customNameId": 1,
+                            "join": [],
+                            "note": "This action block will update the applicable Splunk Enterprise Notable with a comment."
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.notable_id": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.notable_id",
+                                    "value": "artifact:*.cef.notable_id"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "update_es_notable_1",
+                        "id": "9",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 2,
+                                "parameters": [
+                                    "container:id",
+                                    "container:url"
+                                ],
+                                "template": "Automation Request was approved.\nConduct automation actions as required."
+                            },
+                            "event_ids": "get_notables_approved:formatted_data.*",
+                            "status": "remediation approved",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 640
+                }
+            },
+            "notes": "",
+            "origin": {
+                "playbook_id": 529,
+                "playbook_name": "MBB Approval Manager",
+                "playbook_repo_id": 16,
+                "playbook_repo_name": "soar-h3"
+            }
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
+    },
+    "create_time": "2025-07-09T05:16:56.117288+00:00",
+    "draft_mode": false,
+    "labels": [
+        "approval"
+    ],
+    "tags": []
+}
