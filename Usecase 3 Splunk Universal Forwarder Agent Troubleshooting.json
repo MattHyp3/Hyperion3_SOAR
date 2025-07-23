@@ -1,0 +1,1246 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "description": "This playbook is to troubleshoot a Splunk universal forwarder.",
+            "edges": [
+                {
+                    "id": "port_3_to_port_2",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "id": "port_11_to_port_1",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
+                },
+                {
+                    "id": "port_4_to_port_12",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "12",
+                    "targetPort": "12_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_8_to_port_3",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "3",
+                    "targetPort": "3_in"
+                },
+                {
+                    "id": "port_5_to_port_6",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "6",
+                    "targetPort": "6_in"
+                },
+                {
+                    "id": "port_9_to_port_11",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
+                },
+                {
+                    "id": "port_10_to_port_9",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_7_to_port_13",
+                    "sourceNode": "7",
+                    "sourcePort": "7_out",
+                    "targetNode": "13",
+                    "targetPort": "13_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_14_to_port_8",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_12_to_port_15",
+                    "sourceNode": "12",
+                    "sourcePort": "12_out",
+                    "targetNode": "15",
+                    "targetPort": "15_in"
+                },
+                {
+                    "id": "port_15_to_port_10",
+                    "sourceNode": "15",
+                    "sourcePort": "15_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
+                },
+                {
+                    "id": "port_13_to_port_16",
+                    "sourceNode": "13",
+                    "sourcePort": "13_out",
+                    "targetNode": "16",
+                    "targetPort": "16_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_8_to_port_5",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
+                    "targetNode": "5",
+                    "targetPort": "5_in"
+                },
+                {
+                    "id": "port_16_to_port_17",
+                    "sourceNode": "16",
+                    "sourcePort": "16_out",
+                    "targetNode": "17",
+                    "targetPort": "17_in"
+                },
+                {
+                    "id": "port_17_to_port_9",
+                    "sourceNode": "17",
+                    "sourcePort": "17_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_2_to_port_4",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "4",
+                    "targetPort": "4_in"
+                },
+                {
+                    "id": "port_6_to_port_7",
+                    "sourceNode": "6",
+                    "sourcePort": "6_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_0_to_port_14",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
+                }
+            ],
+            "hash": "41318b6ef7c0ce39d16bfb787110060ea8458a67",
+            "nodes": {
+                "0": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_start",
+                        "id": "0",
+                        "type": "start"
+                    },
+                    "errors": {},
+                    "id": "0",
+                    "type": "start",
+                    "warnings": {},
+                    "x": 160,
+                    "y": -20.000000000000128
+                },
+                "1": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionName": "on_finish",
+                        "id": "1",
+                        "type": "end"
+                    },
+                    "errors": {},
+                    "id": "1",
+                    "type": "end",
+                    "warnings": {},
+                    "x": 160,
+                    "y": 1480
+                },
+                "10": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update Notable",
+                            "customNameId": 0,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "update_artifact_1",
+                                "update_artifact"
+                            ],
+                            "note": "update the notable event with the formatted result data"
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "update_notable",
+                        "id": "10",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": {
+                                "functionId": 1,
+                                "parameters": [
+                                    "format_summary_for_linux:formatted_data"
+                                ],
+                                "template": "{0}"
+                            },
+                            "event_ids": "artifact:*.cef.event_id",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 1060
+                },
+                "11": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "playbook_Container_Resolution_1",
+                        "id": "11",
+                        "inputs": {},
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "playbookName": "Container Resolution",
+                        "playbookRepo": 16,
+                        "playbookRepoName": "soar-h3",
+                        "playbookType": "automation",
+                        "synchronous": false,
+                        "type": "playbook"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "playbook",
+                    "warnings": {},
+                    "x": 140,
+                    "y": 1360
+                },
+                "12": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Format Summary for Linux",
+                            "customNameId": 0,
+                            "description": "Gathers all results from commands into a more readable output for ES",
+                            "drop_none": true,
+                            "join": [],
+                            "notRequiredJoins": [
+                                "execute_program_3"
+                            ],
+                            "note": "Gathers all results from commands into a more readable output for ES"
+                        },
+                        "functionId": 1,
+                        "functionName": "format_summary_for_linux",
+                        "id": "12",
+                        "parameters": [
+                            "agent_status_linux:action_result.data.*.output",
+                            "telnet_ds_on_8089:action_result.data.*.output",
+                            "telnet_hf_on_9997:action_result.data.*.output"
+                        ],
+                        "template": "Telnet to Deployment Server Result\n{1}\n\nTelnet to Heavy Forwarder Result\n{2}\n\nAgent Status Result\n{0}\n",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "12",
+                    "type": "format",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 800
+                },
+                "13": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Format Summary for Windows",
+                            "customNameId": 0,
+                            "drop_none": true,
+                            "join": [],
+                            "note": "Gathers all results from commands into a more readable output for ES"
+                        },
+                        "functionId": 2,
+                        "functionName": "format_summary_for_windows",
+                        "id": "13",
+                        "parameters": [
+                            "agent_status_windows:action_result.data.*.std_out",
+                            "netconnect_to_ds_on_8089:action_result.data.*.std_out",
+                            "netconnect_to_hf_on_9997:action_result.data.*.std_out"
+                        ],
+                        "template": "Telnet to Deployment Server Result\n{1}\n\nTelnet to Heavy Forwarder Result\n{2}\n\nAgent Status Result\n{0}",
+                        "type": "format"
+                    },
+                    "errors": {},
+                    "id": "13",
+                    "type": "format",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 800
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Artifact Filter",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This filter block will look for artifacts that do not have artifact_status = old_artifact to avoid the playbook running agaisnt old artifacts from other playbook runs."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.artifact_status",
+                                        "value": "old_artifact"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "OLD ARTIFACT",
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.artifact_status",
+                                        "value": ""
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "NEW ARTIFACT",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 2,
+                        "functionName": "artifact_filter",
+                        "id": "14",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 200,
+                    "y": 80
+                },
+                "15": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Update Artifact",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This utility block will update any new artifacts to have the old_artifact value."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_update",
+                            "repoName": "community"
+                        },
+                        "functionId": 2,
+                        "functionName": "update_artifact",
+                        "id": "15",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_update": {
+                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that an artifact_id must be provided and if one of cef_field or cef_value is provided then they must both be provided. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom artifact id"
+                                        ],
+                                        "description": "ID of the artifact to update, which is required unless artifact_id is a key within input_json",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "1234",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the name of the artifact.",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Change the label of the artifact.",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional input. Either True or False with default as False. If set to True, existing tags on the indicator record will be replaced by the provided input. If set to False, the new tags will be appended to the existing indicator tags.",
+                                        "inputType": "item",
+                                        "label": "overwrite_tags",
+                                        "name": "overwrite_tags",
+                                        "placeholder": "True or False",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_update",
+                                "name": "artifact_update"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_update": {
+                                "artifact_id": "artifact:*.id",
+                                "cef_data_type": null,
+                                "cef_field": "artifact_status",
+                                "cef_value": "old_artifact",
+                                "input_json": null,
+                                "label": null,
+                                "name": null,
+                                "overwrite_tags": "True",
+                                "severity": null,
+                                "tags": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "15",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 940
+                },
+                "16": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Update Artifact",
+                            "customNameId": 1,
+                            "join": [],
+                            "note": "This utility block will update any new artifacts to have the old_artifact value."
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "artifact_update",
+                            "repoName": "community"
+                        },
+                        "functionId": 3,
+                        "functionName": "update_artifact_1",
+                        "id": "16",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "artifact_update": {
+                                "description": "Update an artifact with the specified attributes. All parameters are optional, except that an artifact_id must be provided and if one of cef_field or cef_value is provided then they must both be provided. Supports all fields available in /rest/artifact. Add any unlisted inputs as dictionary keys in input_json. Unsupported keys will automatically be dropped.",
+                                "fields": [
+                                    {
+                                        "dataTypes": [
+                                            "phantom artifact id"
+                                        ],
+                                        "description": "ID of the artifact to update, which is required unless artifact_id is a key within input_json",
+                                        "inputType": "item",
+                                        "label": "artifact_id",
+                                        "name": "artifact_id",
+                                        "placeholder": "1234",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the name of the artifact.",
+                                        "inputType": "item",
+                                        "label": "name",
+                                        "name": "name",
+                                        "placeholder": "artifact",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            ""
+                                        ],
+                                        "description": "Change the label of the artifact.",
+                                        "inputType": "item",
+                                        "label": "label",
+                                        "name": "label",
+                                        "placeholder": "events",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Change the severity of the artifact. Typically this is either \"High\", \"Medium\", or \"Low\".",
+                                        "inputType": "item",
+                                        "label": "severity",
+                                        "name": "severity",
+                                        "placeholder": "Medium",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The name of the CEF field to populate in the artifact, such as \"destinationAddress\" or \"sourceDnsDomain\". Required only if cef_value is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_field",
+                                        "name": "cef_field",
+                                        "placeholder": "destinationAddress",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "*"
+                                        ],
+                                        "description": "The value of the CEF field to populate in the artifact, such as the IP address, domain name, or file hash. Required only if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_value",
+                                        "name": "cef_value",
+                                        "placeholder": "192.0.2.192",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "The CEF data type of the data in cef_value. For example, this could be \"ip\", \"hash\", or \"domain\". Optional, but only operational if cef_field is provided.",
+                                        "inputType": "item",
+                                        "label": "cef_data_type",
+                                        "name": "cef_data_type",
+                                        "placeholder": "ip",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A comma-separated list of tags to apply to the artifact, which is optional.",
+                                        "inputType": "item",
+                                        "label": "tags",
+                                        "name": "tags",
+                                        "placeholder": "tag1, tag2, tag3",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional input. Either True or False with default as False. If set to True, existing tags on the indicator record will be replaced by the provided input. If set to False, the new tags will be appended to the existing indicator tags.",
+                                        "inputType": "item",
+                                        "label": "overwrite_tags",
+                                        "name": "overwrite_tags",
+                                        "placeholder": "True or False",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Optional parameter to modify any extra attributes of the artifact. Input_json will be merged with other inputs. In the event of a conflict, input_json will take precedence.",
+                                        "inputType": "item",
+                                        "label": "input_json",
+                                        "name": "input_json",
+                                        "placeholder": "{\"source_data_identifier\": \"1234\", \"data\": \"5678\"}",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "artifact_update",
+                                "name": "artifact_update"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "artifact_update": {
+                                "artifact_id": "artifact:*.id",
+                                "cef_data_type": null,
+                                "cef_field": "artifact_status",
+                                "cef_value": "old_artifact",
+                                "input_json": null,
+                                "label": null,
+                                "name": null,
+                                "overwrite_tags": "True",
+                                "severity": null,
+                                "tags": null
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "16",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 940
+                },
+                "17": {
+                    "data": {
+                        "action": "update event",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Update Notable",
+                            "customNameId": 1,
+                            "join": [],
+                            "note": "update the notable event with the formatted result data"
+                        },
+                        "connector": "Splunk",
+                        "connectorConfigs": [
+                            "splunkes"
+                        ],
+                        "connectorId": "91883aa8-9c81-470b-97a1-5d8f7995f560",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "update_notable_1",
+                        "id": "17",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "comment": "format_summary_for_windows:formatted_data",
+                            "event_ids": "artifact:*.cef.event_id",
+                            "wait_for_confirmation": true
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "event_ids"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "17",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 1060
+                },
+                "2": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Telnet HF on 9997",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "run the telnet command to the heavy forwarder to check for connectivity"
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.Endpoint": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.Endpoint",
+                                    "value": "artifact:*.cef.Endpoint"
+                                }
+                            }
+                        },
+                        "functionId": 1,
+                        "functionName": "telnet_hf_on_9997",
+                        "id": "2",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "echo \"quit\" | telnet 1.2.3.4 9997",
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "2",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 540
+                },
+                "3": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Telnet DS on 8089",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "run the telnet command to the deployment server to check for connectivity"
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "customDatapaths": {
+                            "artifacts": {
+                                "artifact:*.cef.Endpoint": {
+                                    "contains": [],
+                                    "isCustomDatapath": true,
+                                    "label": "artifact:*.cef.Endpoint",
+                                    "value": "artifact:*.cef.Endpoint"
+                                }
+                            }
+                        },
+                        "functionId": 2,
+                        "functionName": "telnet_ds_on_8089",
+                        "id": "3",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "echo \"quit\" | telnet 1.2.3.4 8089",
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "3",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 400
+                },
+                "4": {
+                    "data": {
+                        "action": "execute program",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Agent Status Linux",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "Gets the status of the agent"
+                        },
+                        "connector": "SSH",
+                        "connectorConfigs": [
+                            "test123"
+                        ],
+                        "connectorId": "d37aa7fe-c973-44ee-a164-2ca5bf321b1f",
+                        "connectorVersion": "v1",
+                        "functionId": 3,
+                        "functionName": "agent_status_linux",
+                        "id": "4",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "command": "/opt/splunkforwarder/bin/splunk status",
+                            "ip_hostname": "artifact:*.cef.IP"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "ip_hostname"
+                            }
+                        ],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "4",
+                    "type": "action",
+                    "warnings": {},
+                    "x": -20,
+                    "y": 680
+                },
+                "5": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "NetConnect to DS on 8089",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "run the NetConnect command to the deployment server to check for connectivity"
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 3,
+                        "functionName": "netconnect_to_ds_on_8089",
+                        "id": "5",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 3,
+                                "parameters": [],
+                                "template": "test-netconnection 1.2.3.4 -port 8089\n"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "tab": "byConnector",
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "5",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 400
+                },
+                "6": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "NetConnect to HF on 9997",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "Running a NetConnect to the heavy forwarder to confirm data flow"
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 4,
+                        "functionName": "netconnect_to_hf_on_9997",
+                        "id": "6",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 4,
+                                "parameters": [],
+                                "template": "test-netconnection 1.2.3.4 -port 9997"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "6",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 540
+                },
+                "7": {
+                    "data": {
+                        "action": "run script",
+                        "actionType": "generic",
+                        "advanced": {
+                            "customName": "Agent Status Windows",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "check status of the agent for windows"
+                        },
+                        "connector": "Windows Remote Management",
+                        "connectorConfigs": [
+                            "abc"
+                        ],
+                        "connectorId": "a0222b95-b006-4c9e-9578-1428defcec0f",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "agent_status_windows",
+                        "id": "7",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "ip_hostname": "artifact:*.cef.IP",
+                            "script_str": {
+                                "functionId": 2,
+                                "parameters": [],
+                                "template": "cd \"C:\\Program Files\\SplunkUniversalForwarder\\bin\\\"; .\\splunk status\n"
+                            }
+                        },
+                        "requiredParameters": [],
+                        "type": "action"
+                    },
+                    "errors": {},
+                    "id": "7",
+                    "type": "action",
+                    "warnings": {},
+                    "x": 320,
+                    "y": 680
+                },
+                "8": {
+                    "data": {
+                        "advanced": {
+                            "customName": "OS Filter",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This filter will filter a host based on whether it is on a linux or windows platform."
+                        },
+                        "conditions": [
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 0,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.OS",
+                                        "value": "Windows"
+                                    }
+                                ],
+                                "conditionIndex": 0,
+                                "customName": "Windows",
+                                "logic": "and"
+                            },
+                            {
+                                "comparisons": [
+                                    {
+                                        "conditionIndex": 1,
+                                        "op": "==",
+                                        "param": "artifact:*.cef.OS",
+                                        "value": "Linux"
+                                    }
+                                ],
+                                "conditionIndex": 1,
+                                "customName": "Linux",
+                                "logic": "and"
+                            }
+                        ],
+                        "functionId": 1,
+                        "functionName": "os_filter",
+                        "id": "8",
+                        "type": "filter"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "filter",
+                    "warnings": {},
+                    "x": 200,
+                    "y": 240
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Add Container Note",
+                            "customNameId": 0,
+                            "join": [],
+                            "note": "This utility block will add a note to the SOAR container."
+                        },
+                        "functionId": 1,
+                        "functionName": "add_container_note",
+                        "id": "9",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "add_note": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "title",
+                                        "name": "title",
+                                        "placeholder": "Enter a note title",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "label": "content",
+                                        "name": "content",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "choices": [
+                                            "markdown",
+                                            "html"
+                                        ],
+                                        "default": "markdown",
+                                        "description": "",
+                                        "label": "note format",
+                                        "name": "note_format",
+                                        "placeholder": "Enter the note content",
+                                        "renderType": "dropdown",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "default": "general",
+                                        "hidden": true,
+                                        "name": "note_type",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "event_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "task_id",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add note",
+                                "name": "add_note"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "add_note": {
+                                "_internal": [
+                                    "container",
+                                    "note_type",
+                                    "author",
+                                    "event_id",
+                                    "task_id",
+                                    "trace"
+                                ],
+                                "content": "Splunk Universal Forwarder troubleshooting commands have been executed.",
+                                "note_format": "markdown",
+                                "note_type": "general",
+                                "title": "Splunk Universal Forwarder"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "utility",
+                    "warnings": {},
+                    "x": 140,
+                    "y": 1220
+                }
+            },
+            "notes": "",
+            "origin": {
+                "playbook_id": 535,
+                "playbook_name": "MBB Splunk Universal Forwarder Agent Troubleshooting",
+                "playbook_repo_id": 2,
+                "playbook_repo_name": "local"
+            }
+        },
+        "input_spec": null,
+        "output_spec": null,
+        "playbook_type": "automation",
+        "python_version": "3",
+        "schema": "5.0.11",
+        "version": "6.2.0.355"
+    },
+    "create_time": "2025-07-23T11:50:54.707519+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
