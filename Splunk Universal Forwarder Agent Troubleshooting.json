@@ -148,7 +148,7 @@
                     "targetPort": "14_in"
                 }
             ],
-            "hash": "41318b6ef7c0ce39d16bfb787110060ea8458a67",
+            "hash": "acfdbf0ca51fddc118e2328f37bc8fc6ca5e3296",
             "nodes": {
                 "0": {
                     "data": {
@@ -1224,10 +1224,10 @@
             },
             "notes": "",
             "origin": {
-                "playbook_id": 535,
-                "playbook_name": "MBB Splunk Universal Forwarder Agent Troubleshooting",
-                "playbook_repo_id": 2,
-                "playbook_repo_name": "local"
+                "playbook_id": 548,
+                "playbook_name": "Usecase 3 Splunk Universal Forwarder Agent Troubleshooting",
+                "playbook_repo_id": 15,
+                "playbook_repo_name": "Hyperion3"
             }
         },
         "input_spec": null,
